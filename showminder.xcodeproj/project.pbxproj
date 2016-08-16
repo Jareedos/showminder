@@ -12,6 +12,7 @@
 		BF26D49F1D63C28400C0267B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF26D49D1D63C28400C0267B /* Main.storyboard */; };
 		BF26D4A11D63C28400C0267B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4A01D63C28400C0267B /* Assets.xcassets */; };
 		BF26D4A41D63C28400C0267B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4A21D63C28400C0267B /* LaunchScreen.storyboard */; };
+		BF26D4B11D63C72C00C0267B /* beyond_the_mountains.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		BF26D4A01D63C28400C0267B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF26D4A31D63C28400C0267B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF26D4A51D63C28400C0267B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beyond_the_mountains.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		BF26D4981D63C28400C0267B /* showminder */ = {
 			isa = PBXGroup;
 			children = (
+				BF26D4AF1D63C71200C0267B /* Resources */,
 				BF26D4AB1D63C28F00C0267B /* Model */,
 				BF26D4AC1D63C29700C0267B /* View */,
 				BF26D4AD1D63C2A200C0267B /* Controller */,
@@ -94,6 +97,14 @@
 				BF26D4A51D63C28400C0267B /* Info.plist */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		BF26D4AF1D63C71200C0267B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +168,7 @@
 			files = (
 				BF26D4A41D63C28400C0267B /* LaunchScreen.storyboard in Resources */,
 				BF26D4A11D63C28400C0267B /* Assets.xcassets in Resources */,
+				BF26D4B11D63C72C00C0267B /* beyond_the_mountains.ttf in Resources */,
 				BF26D49F1D63C28400C0267B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
