@@ -25,10 +25,30 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asl-st-WUZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="126"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In/ Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2Z-2h-Ynm">
+                                        <rect key="frame" x="20" y="35" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="T4j-TH-l4C"/>
+                                            <constraint firstAttribute="width" constant="200" id="r2w-xd-Rmm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.31764705879999999" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="126" id="2no-eL-wek"/>
+                                    <constraint firstItem="t2Z-2h-Ynm" firstAttribute="leading" secondItem="asl-st-WUZ" secondAttribute="leading" constant="24" id="57e-Kt-Q2o"/>
+                                    <constraint firstItem="t2Z-2h-Ynm" firstAttribute="leading" secondItem="asl-st-WUZ" secondAttribute="leadingMargin" constant="12" id="GNR-vm-MC1"/>
+                                    <constraint firstItem="t2Z-2h-Ynm" firstAttribute="top" secondItem="asl-st-WUZ" secondAttribute="top" constant="35" id="KT2-z2-rLo"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="57e-Kt-Q2o"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-8Z-jdP" customClass="MaterialView" customModule="showminder" customModuleProvider="target">
                                 <rect key="frame" x="20" y="74" width="560" height="126"/>
