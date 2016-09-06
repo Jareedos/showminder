@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="126" id="2no-eL-wek"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-8Z-jdP">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-8Z-jdP" customClass="MaterialView" customModule="showminder" customModuleProvider="target">
                                 <rect key="frame" x="20" y="74" width="560" height="126"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-wx-ao8">
@@ -40,7 +40,7 @@
                                             <constraint firstAttribute="width" constant="258" id="oyN-uu-Ucm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BeyondTheMountains" family="Beyond The Mountains" pointSize="50"/>
-                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.95686274510000002" green="0.31764705879999999" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
