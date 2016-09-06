@@ -3,7 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="beyond_the_mountains.ttf">
+            <string>BeyondTheMountains</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -16,11 +22,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asl-st-WUZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="126"/>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.31764705879999999" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="126" id="2no-eL-wek"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-8Z-jdP">
+                                <rect key="frame" x="20" y="74" width="560" height="126"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-wx-ao8">
+                                        <rect key="frame" x="151" y="18" width="258" height="89"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="89" id="9wC-C2-kqK"/>
+                                            <constraint firstAttribute="width" constant="258" id="oyN-uu-Ucm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="BeyondTheMountains" family="Beyond The Mountains" pointSize="50"/>
+                                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ODc-wx-ao8" firstAttribute="centerY" secondItem="hnv-8Z-jdP" secondAttribute="centerY" id="8O0-M7-63l"/>
+                                    <constraint firstItem="ODc-wx-ao8" firstAttribute="centerX" secondItem="hnv-8Z-jdP" secondAttribute="centerX" id="BNA-9A-Mbu"/>
+                                    <constraint firstAttribute="height" constant="126" id="sh5-6p-wiv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="asl-st-WUZ" secondAttribute="trailing" id="UsU-F1-KFQ"/>
+                            <constraint firstItem="asl-st-WUZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Wmw-9c-v5n"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hnv-8Z-jdP" secondAttribute="trailing" id="mx7-bN-ogn"/>
+                            <constraint firstItem="hnv-8Z-jdP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="54" id="r10-Aw-ayE"/>
+                            <constraint firstItem="hnv-8Z-jdP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="uwG-vP-Vfq"/>
+                            <constraint firstItem="asl-st-WUZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yCi-Zr-Kxo"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="258" y="366"/>
         </scene>
     </scenes>
 </document>
