@@ -55,12 +55,12 @@
                                 <rect key="frame" x="20" y="74" width="560" height="126"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-wx-ao8">
-                                        <rect key="frame" x="151" y="18" width="258" height="89"/>
+                                        <rect key="frame" x="130" y="12.5" width="300" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="89" id="9wC-C2-kqK"/>
-                                            <constraint firstAttribute="width" constant="258" id="oyN-uu-Ucm"/>
+                                            <constraint firstAttribute="height" constant="100" id="9wC-C2-kqK"/>
+                                            <constraint firstAttribute="width" constant="300" id="oyN-uu-Ucm"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="BeyondTheMountains" family="Beyond The Mountains" pointSize="50"/>
+                                        <fontDescription key="fontDescription" name="BeyondTheMountains" family="Beyond The Mountains" pointSize="56"/>
                                         <color key="textColor" red="0.95686274510000002" green="0.31764705879999999" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -129,14 +129,14 @@
                                             </mask>
                                         </variation>
                                     </pickerView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTB-fc-HxE">
-                                        <rect key="frame" x="207" y="289" width="145" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTB-fc-HxE" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
+                                        <rect key="frame" x="204.5" y="289" width="150" height="45"/>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.31764705879999999" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="XGp-r6-FHw"/>
-                                            <constraint firstAttribute="width" constant="145" id="ppB-gk-0ak"/>
+                                            <constraint firstAttribute="height" constant="45" id="XGp-r6-FHw"/>
+                                            <constraint firstAttribute="width" constant="150" id="ppB-gk-0ak"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal" title="Login/Signup">
                                             <color key="titleColor" red="0.99599358969999996" green="0.99599358969999996" blue="0.99599358969999996" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -197,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="366"/>
+            <point key="canvasLocation" x="348" y="354"/>
         </scene>
     </scenes>
 </document>

@@ -11,6 +11,7 @@
 		BF11135D1D7F7C400061E014 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11135C1D7F7C400061E014 /* Constants.swift */; };
 		BF11135F1D7F7FA00061E014 /* MaterialBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11135E1D7F7FA00061E014 /* MaterialBtn.swift */; };
 		BF1113611D7FA8960061E014 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1113601D7FA8960061E014 /* MaterialTextField.swift */; };
+		BF1113631D808EC20061E014 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF1113621D808EC20061E014 /* GoogleService-Info.plist */; };
 		BF26D49A1D63C28400C0267B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26D4991D63C28400C0267B /* AppDelegate.swift */; };
 		BF26D49C1D63C28400C0267B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF26D49B1D63C28400C0267B /* ViewController.swift */; };
 		BF26D49F1D63C28400C0267B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF26D49D1D63C28400C0267B /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		BF11135C1D7F7C400061E014 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BF11135E1D7F7FA00061E014 /* MaterialBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialBtn.swift; sourceTree = "<group>"; };
 		BF1113601D7FA8960061E014 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
+		BF1113621D808EC20061E014 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF26D4961D63C28400C0267B /* showminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = showminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF26D4991D63C28400C0267B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF26D49B1D63C28400C0267B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				BF26D4AC1D63C29700C0267B /* View */,
 				BF26D4AD1D63C2A200C0267B /* Controller */,
 				BF26D4AE1D63C2BF00C0267B /* Utilities */,
+				BF1113621D808EC20061E014 /* GoogleService-Info.plist */,
 				BF26D4A01D63C28400C0267B /* Assets.xcassets */,
 				BFF363901D6FA80800E764A8 /* background_showmider,png.gif */,
 				BFF3638E1D6F826500E764A8 /* showMinderLoadScreen.png */,
@@ -190,6 +193,7 @@
 				BF26D49F1D63C28400C0267B /* Main.storyboard in Resources */,
 				BFF363911D6FA80800E764A8 /* background_showmider,png.gif in Resources */,
 				BFF3638F1D6F826500E764A8 /* showMinderLoadScreen.png in Resources */,
+				BF1113631D808EC20061E014 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
