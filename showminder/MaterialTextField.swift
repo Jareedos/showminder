@@ -16,7 +16,16 @@ class MaterialTextField: UITextField {
         layer.borderWidth = 1.0
     }
     
+    //For placeholder text
     
+    override func textRectForBounds(bounds: CGRect) -> CGRect {
+        return CGRectInset(bounds, 10, 0)
+    }
+    
+    //For editable text
+    override func editingRectForBounds(bounds: CGRect) -> CGRect {
+        return CGRectInset(bounds, 10, 0)
+    }
 
 
 }
