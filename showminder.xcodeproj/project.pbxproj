@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE109DCA3C3A18F2C21E4B8C /* libPods-showminder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAE7D2E77BEC029725BAF0DB /* libPods-showminder.a */; };
 		BF11135B1D7F7B820061E014 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11135A1D7F7B820061E014 /* MaterialView.swift */; };
 		BF11135D1D7F7C400061E014 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11135C1D7F7C400061E014 /* Constants.swift */; };
 		BF11135F1D7F7FA00061E014 /* MaterialBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF11135E1D7F7FA00061E014 /* MaterialBtn.swift */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71E6DF4678D9598FD356F65B /* Pods-showminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-showminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-showminder/Pods-showminder.debug.xcconfig"; sourceTree = "<group>"; };
+		BAE7D2E77BEC029725BAF0DB /* libPods-showminder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-showminder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF11135A1D7F7B820061E014 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		BF11135C1D7F7C400061E014 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BF11135E1D7F7FA00061E014 /* MaterialBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialBtn.swift; sourceTree = "<group>"; };
@@ -38,6 +41,7 @@
 		BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beyond_the_mountains.ttf; sourceTree = "<group>"; };
 		BFF3638E1D6F826500E764A8 /* showMinderLoadScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = showMinderLoadScreen.png; sourceTree = "<group>"; };
 		BFF363901D6FA80800E764A8 /* background_showmider,png.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background_showmider,png.gif"; sourceTree = "<group>"; };
+		EF656B81D30B0F73E73D1409 /* Pods-showminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-showminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-showminder/Pods-showminder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +49,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE109DCA3C3A18F2C21E4B8C /* libPods-showminder.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A531805EF3A93C37901B283 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAE7D2E77BEC029725BAF0DB /* libPods-showminder.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0675F390F66CFFD053E34F7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				71E6DF4678D9598FD356F65B /* Pods-showminder.debug.xcconfig */,
+				EF656B81D30B0F73E73D1409 /* Pods-showminder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BF26D48D1D63C28400C0267B = {
 			isa = PBXGroup;
 			children = (
 				BF26D4981D63C28400C0267B /* showminder */,
 				BF26D4971D63C28400C0267B /* Products */,
+				B0675F390F66CFFD053E34F7 /* Pods */,
+				5A531805EF3A93C37901B283 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF26D4A81D63C28400C0267B /* Build configuration list for PBXNativeTarget "showminder" */;
 			buildPhases = (
+				8E67E781B03588782A2DAACC /* [CP] Check Pods Manifest.lock */,
 				BF26D4921D63C28400C0267B /* Sources */,
 				BF26D4931D63C28400C0267B /* Frameworks */,
 				BF26D4941D63C28400C0267B /* Resources */,
+				502D24FE7FB91D6C19FF69A4 /* [CP] Embed Pods Frameworks */,
+				8CEAAEF4ACF74578632D0825 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -198,6 +225,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		502D24FE7FB91D6C19FF69A4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-showminder/Pods-showminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CEAAEF4ACF74578632D0825 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-showminder/Pods-showminder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E67E781B03588782A2DAACC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF26D4921D63C28400C0267B /* Sources */ = {
@@ -322,6 +397,7 @@
 		};
 		BF26D4A91D63C28400C0267B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71E6DF4678D9598FD356F65B /* Pods-showminder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = showminder/Info.plist;
@@ -333,6 +409,7 @@
 		};
 		BF26D4AA1D63C28400C0267B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF656B81D30B0F73E73D1409 /* Pods-showminder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = showminder/Info.plist;
