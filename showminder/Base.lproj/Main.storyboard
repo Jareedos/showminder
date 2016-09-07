@@ -54,8 +54,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-8Z-jdP" customClass="MaterialView" customModule="showminder" customModuleProvider="target">
                                 <rect key="frame" x="20" y="74" width="560" height="126"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-wx-ao8">
-                                        <rect key="frame" x="130" y="12.5" width="300" height="100"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Showminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-wx-ao8">
+                                        <rect key="frame" x="130" y="12" width="300" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="9wC-C2-kqK"/>
                                             <constraint firstAttribute="width" constant="300" id="oyN-uu-Ucm"/>
@@ -81,7 +81,7 @@
                                             <constraint firstAttribute="width" constant="200" id="8b2-sX-5Qf"/>
                                             <constraint firstAttribute="height" constant="30" id="iiW-94-sIe"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -91,18 +91,18 @@
                                             <constraint firstAttribute="width" constant="200" id="fsV-xm-WE5"/>
                                             <constraint firstAttribute="height" constant="30" id="h1C-Yx-N0s"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="T5H-a4-nA0" customClass="MaterialTextField" customModule="showminder" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="T5H-a4-nA0" customClass="MaterialTextField" customModule="showminder" customModuleProvider="target">
                                         <rect key="frame" x="20" y="50" width="520" height="35"/>
                                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="HBE-Bn-vXe"/>
                                         </constraints>
                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AeS-Kn-Hbu" customClass="MaterialTextField" customModule="showminder" customModuleProvider="target">
@@ -112,7 +112,7 @@
                                             <constraint firstAttribute="height" constant="35" id="gm8-tF-N1V"/>
                                         </constraints>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3w-Nd-cml">
@@ -130,7 +130,7 @@
                                         </variation>
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTB-fc-HxE" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
-                                        <rect key="frame" x="204.5" y="289" width="150" height="45"/>
+                                        <rect key="frame" x="204.5" y="284" width="150" height="45"/>
                                         <color key="backgroundColor" red="0.95686274510000002" green="0.31764705879999999" blue="0.1176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="XGp-r6-FHw"/>
@@ -140,6 +140,9 @@
                                         <state key="normal" title="Login/Signup">
                                             <color key="titleColor" red="0.99599358969999996" green="0.99599358969999996" blue="0.99599358969999996" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="LoginBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BNi-yK-vXH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -148,7 +151,6 @@
                                     <constraint firstItem="x15-qr-yOZ" firstAttribute="top" secondItem="g86-DK-O33" secondAttribute="top" constant="5" id="Ebf-PE-2Ft"/>
                                     <constraint firstItem="AeS-Kn-Hbu" firstAttribute="trailing" secondItem="T5H-a4-nA0" secondAttribute="trailing" id="EeH-yg-6vJ"/>
                                     <constraint firstAttribute="bottom" secondItem="PTB-fc-HxE" secondAttribute="bottom" constant="10" id="F8Z-GF-AHC"/>
-                                    <constraint firstItem="PTB-fc-HxE" firstAttribute="top" secondItem="O3w-Nd-cml" secondAttribute="bottom" constant="30" id="Gg8-Eh-vxE"/>
                                     <constraint firstItem="O3w-Nd-cml" firstAttribute="top" secondItem="UqH-Cl-dI7" secondAttribute="bottom" constant="10" id="JKh-ah-NVQ"/>
                                     <constraint firstItem="O3w-Nd-cml" firstAttribute="leading" secondItem="g86-DK-O33" secondAttribute="leading" id="Kbd-o5-J8m"/>
                                     <constraint firstItem="T5H-a4-nA0" firstAttribute="top" secondItem="x15-qr-yOZ" secondAttribute="bottom" constant="15" id="MHU-c5-OCC"/>
@@ -164,6 +166,7 @@
                                     <constraint firstItem="UqH-Cl-dI7" firstAttribute="leading" secondItem="g86-DK-O33" secondAttribute="leading" constant="20" id="jrc-fU-xpo"/>
                                     <constraint firstAttribute="trailing" secondItem="O3w-Nd-cml" secondAttribute="trailing" constant="20" id="krj-Or-adc"/>
                                     <constraint firstAttribute="width" constant="560" id="kzy-UL-4Ya"/>
+                                    <constraint firstItem="PTB-fc-HxE" firstAttribute="top" secondItem="O3w-Nd-cml" secondAttribute="bottom" constant="25" id="qG0-nD-Dab"/>
                                     <constraint firstItem="PTB-fc-HxE" firstAttribute="centerX" secondItem="g86-DK-O33" secondAttribute="centerX" id="qTW-6P-Vyl"/>
                                     <constraint firstItem="AeS-Kn-Hbu" firstAttribute="leading" secondItem="T5H-a4-nA0" secondAttribute="leading" id="v3B-m4-x7Z"/>
                                 </constraints>
@@ -194,6 +197,10 @@
                             <constraint firstItem="asl-st-WUZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yCi-Zr-Kxo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="T5H-a4-nA0" id="l7X-C6-BR9"/>
+                        <outlet property="passwordTextField" destination="AeS-Kn-Hbu" id="gbe-Mi-73x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
