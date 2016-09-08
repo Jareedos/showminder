@@ -26,6 +26,38 @@ class ViewController: UIViewController {
     
     @IBAction func LoginBtnClicked(sender: AnyObject) {
         
+        if let email = emailTextField.text where email != "", let pwd = passwordTextField.text where pwd != "" {
+            
+            
+            FIRAuth.auth()?.createUserWithEmail(emailTextField.text!, password: passwordTextField.text!, completion: {
+                user, error in
+
+            })
+        } else {
+            showErrorAlert("Email & Password Required", msg: "You must enter an email and a password")
+        }
+        
+    }
+    
+//    func login(){
+//        FIRAuth.auth()?.signInWithEmail(emailTextField.text!, password: passwordTextField.text!, completion: {
+//            user,error in
+//            
+//            if error != nil{
+//                print("error")
+//            } else {
+//                print("It Worked")
+//            }
+//            
+//            
+//        })
+//    }
+    
+    func showErrorAlert(title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(action)
+        presentViewController(alert, animated: true, completion: nil)
         
     }
     
