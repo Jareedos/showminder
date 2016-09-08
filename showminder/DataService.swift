@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import Firebase
+
+let URL_BASE = FIRDatabase.database().reference()
+
+class DataService {
+    static let ds = DataService()
+    
+    private var _REF_BASE = URL_BASE
+    private var _REF_POSTS = URL_BASE.child()
+    private var _REF_USERS = URL_BASE.child()
+    
+    var REF_BASE: FIRDatabaseRefernce {
+        return _REF_BASE
+    }
+}
