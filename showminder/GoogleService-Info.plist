@@ -36,5 +36,7 @@
 	<string>1:499715481265:ios:47b4253e8754845c</string>
 	<key>DATABASE_URL</key>
 	<string>https://showminder.firebaseio.com</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 </dict>
 </plist>

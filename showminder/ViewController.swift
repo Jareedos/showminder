@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class ViewController: UIViewController {
     @IBOutlet weak var emailTextField: MaterialTextField!
     @IBOutlet weak var passwordTextField: MaterialTextField!
@@ -19,48 +20,85 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
+            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+        }
     }
     
-    @IBAction func LoginBtnClicked(sender: AnyObject) {
+ 
+    
+    @IBAction func attemptLogin(sender: UIButton!) {
         
         if let email = emailTextField.text where email != "", let pwd = passwordTextField.text where pwd != "" {
-            
-            
-            FIRAuth.auth()?.createUserWithEmail(emailTextField.text!, password: passwordTextField.text!, completion: {
+           
+     
+            FIRAuth.auth()?.signInWithEmail(email, password: pwd, completion: {
                 user, error in
+            
+                if error != nil {
+                    
+                  
+                    
+                  if error!.code == STATUS_ACCOUNT_NONEXIST {
+                          FIRAuth.auth()?.createUserWithEmail(email, password: pwd, completion: {
+                            user, error in
+                    
+                        
+                            if error != nil {
+                                print(error)
+                                print(error!.code)
+                                self.showErrorAlert("Could not create account", msg: "Problem creating account. Try something else")
+                            } else {
+            
+                                
+                                FIRAuth.auth()?.signInWithEmail(email, password: pwd, completion: {
+                                    user, error in
+                                
+                                        self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                                    
 
+                                    NSUserDefaults.standardUserDefaults().setObject(user?.uid, forKey: KEY_UID)
+                                })
+                            }
+                            
+                        })
+                  } else if error!.code == INVALID_EMAIL_ADDRESS {
+                        self.showErrorAlert("Could not login", msg: "Please enter a valid email")
+                  } else if error!.code == PASSWORD_ISNT_LONG_ENOUGH {
+                        self.showErrorAlert("Could not login", msg: "Please enter a vaild password of 6 characters or greater")
+                  } else {
+                        self.showErrorAlert("Could not login", msg: "Please check your username or password")
+//                    print(error)
+//                    print(error!.code)
+                    }
+                    
+                } else {
+                    self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                    NSUserDefaults.standardUserDefaults().setObject(user?.uid, forKey: KEY_UID)
+                }
+                
             })
+            
+            
         } else {
-            showErrorAlert("Email & Password Required", msg: "You must enter an email and a password")
+            showErrorAlert("Email and Password Required", msg: "You must enter an email and a password")
+
+         
         }
-        
     }
-    
-//    func login(){
-//        FIRAuth.auth()?.signInWithEmail(emailTextField.text!, password: passwordTextField.text!, completion: {
-//            user,error in
-//            
-//            if error != nil{
-//                print("error")
-//            } else {
-//                print("It Worked")
-//            }
-//            
-//            
-//        })
-//    }
-    
-    func showErrorAlert(title: String, msg: String) {
-        let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
-        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alert.addAction(action)
-        presentViewController(alert, animated: true, completion: nil)
+
         
-    }
-    
+        func showErrorAlert(title: String, msg: String) {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+            let action = UIAlertAction(title: "OK", style: .Default , handler: nil)
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+            
+        }
 
 
 }
