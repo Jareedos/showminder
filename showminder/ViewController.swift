@@ -18,67 +18,67 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    }
-
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
-            self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-        }
+        let tapgestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.didTapOnBackground))
+        self.view.addGestureRecognizer(tapgestureRecognizer)
     }
+    
+    func didTapOnBackground() {
+        self.view.endEditing(true)
+    }
+
+
     
  
     
-    @IBAction func attemptLogin(sender: UIButton!) {
+    @IBAction func attemptLogin(_ sender: UIButton!) {
         
-        if let email = emailTextField.text where email != "", let pwd = passwordTextField.text where pwd != "" {
+        if let email = emailTextField.text , email != "", let pwd = passwordTextField.text , pwd != "" {
            
      
-            FIRAuth.auth()?.signInWithEmail(email, password: pwd, completion: {
+            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: {
                 user, error in
             
-                if error != nil {
-                    
+                if let error = error as? NSError {
+                    print(error)
                   
                     
-                  if error!.code == STATUS_ACCOUNT_NONEXIST {
-                          FIRAuth.auth()?.createUserWithEmail(email, password: pwd, completion: {
+                  if error.code == STATUS_ACCOUNT_NONEXIST {
+                         FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: {
                             user, error in
                     
                         
+                            
                             if error != nil {
                                 print(error)
-                                print(error!.code)
                                 self.showErrorAlert("Could not create account", msg: "Problem creating account. Try something else")
                             } else {
             
                                 
-                                FIRAuth.auth()?.signInWithEmail(email, password: pwd, completion: {
+                                FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: {
                                     user, error in
                                 
-                                        self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
+                                        self.performSegue(withIdentifier: SEGUE_LOGGED_IN, sender: nil)
                                     
 
-                                    NSUserDefaults.standardUserDefaults().setObject(user?.uid, forKey: KEY_UID)
-                                })
+                                    
+                                   
+                               })
                             }
                             
-                        })
-                  } else if error!.code == INVALID_EMAIL_ADDRESS {
+                       })
+                  } else if error.code == INVALID_EMAIL_ADDRESS {
                         self.showErrorAlert("Could not login", msg: "Please enter a valid email")
-                  } else if error!.code == PASSWORD_ISNT_LONG_ENOUGH {
+                  } else if error.code == PASSWORD_ISNT_LONG_ENOUGH {
                         self.showErrorAlert("Could not login", msg: "Please enter a vaild password of 6 characters or greater")
                   } else {
                         self.showErrorAlert("Could not login", msg: "Please check your username or password")
 //                    print(error)
 //                    print(error!.code)
-                    }
-                    
+                   }
+                
                 } else {
-                    self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-                    NSUserDefaults.standardUserDefaults().setObject(user?.uid, forKey: KEY_UID)
+                    self.performSegue(withIdentifier: SEGUE_LOGGED_IN, sender: nil)
                 }
                 
             })
@@ -92,11 +92,11 @@ class ViewController: UIViewController {
     }
 
         
-        func showErrorAlert(title: String, msg: String) {
-            let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
-            let action = UIAlertAction(title: "OK", style: .Default , handler: nil)
+        func showErrorAlert(_ title: String, msg: String) {
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default , handler: nil)
             alert.addAction(action)
-            presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
             
         }
 
