@@ -20,6 +20,7 @@
 		BF26D4A41D63C28400C0267B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4A21D63C28400C0267B /* LaunchScreen.storyboard */; };
 		BF26D4B11D63C72C00C0267B /* beyond_the_mountains.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */; };
 		BF9B0E441D8203BE008133C7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B0E431D8203BE008133C7 /* DataService.swift */; };
+		BFD2785C1D8B49CC00746CD8 /* tvShowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2785B1D8B49CC00746CD8 /* tvShowApi.swift */; };
 		BFF363911D6FA80800E764A8 /* background_showmider,png.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFF363901D6FA80800E764A8 /* background_showmider,png.gif */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beyond_the_mountains.ttf; sourceTree = "<group>"; };
 		BF692A731D89D7AB0032F54C /* showminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = showminder.entitlements; sourceTree = "<group>"; };
 		BF9B0E431D8203BE008133C7 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		BFD2785B1D8B49CC00746CD8 /* tvShowApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tvShowApi.swift; sourceTree = "<group>"; };
 		BFF363901D6FA80800E764A8 /* background_showmider,png.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background_showmider,png.gif"; sourceTree = "<group>"; };
 		EF656B81D30B0F73E73D1409 /* Pods-showminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-showminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-showminder/Pods-showminder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 		BF26D4AB1D63C28F00C0267B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BFD2785B1D8B49CC00746CD8 /* tvShowApi.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				BF26D49A1D63C28400C0267B /* AppDelegate.swift in Sources */,
 				BF11135D1D7F7C400061E014 /* Constants.swift in Sources */,
 				BF11135F1D7F7FA00061E014 /* MaterialBtn.swift in Sources */,
+				BFD2785C1D8B49CC00746CD8 /* tvShowApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

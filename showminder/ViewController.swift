@@ -21,6 +21,7 @@ class ViewController: UIViewController {
         
         let tapgestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.didTapOnBackground))
         self.view.addGestureRecognizer(tapgestureRecognizer)
+        //callApi()
     }
     
     func didTapOnBackground() {
