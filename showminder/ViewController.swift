@@ -13,6 +13,8 @@ import Firebase
 class ViewController: UIViewController {
     @IBOutlet weak var emailTextField: MaterialTextField!
     @IBOutlet weak var passwordTextField: MaterialTextField!
+    
+
   
 
     override func viewDidLoad() {
@@ -21,7 +23,7 @@ class ViewController: UIViewController {
         
         let tapgestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.didTapOnBackground))
         self.view.addGestureRecognizer(tapgestureRecognizer)
-        //callApi()
+    
     }
     
     func didTapOnBackground() {

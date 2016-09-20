@@ -9,16 +9,37 @@
 import Foundation
 import Alamofire
 
+func callApi(completed: @escaping DownloadComplete) {
+    
+    Alamofire.request("https://www.parsehub.com/api/v2/projects/\(projectToken)/last_ready_run/data?api_key=\(apiAccessToken)&format=json").responseJSON
+        { response in
+            
+            if let result = response.result.value {
+                //let JSON = result as! NSDictionary
+                //print(JSON)
+                completed()
+            }
+            
+            //        print("result of calling to api is: ", result, " data: ", response.data)
+            
+    }
+    
+}
 
-// func callApi() {
-    // Alamofire.request().responseJSON { response in
-        // print(response.request)  // original URL request
-        // print(response.response) // HTTP URL response
-        // print(response.data)     // server data
-        // print(response.result)   // result of response serialization
-        
-        // if let JSON = response.result.value {
-            // print("JSON: \(JSON)")
-        // }
-    // }
-// }
+func callUpdateApiIfNeed() {
+    let keyForSaveUd = "prevTimeForApiCall"
+    let ud = UserDefaults.standard
+    let timerDouble = ud.double(forKey: keyForSaveUd)
+    let now = CFAbsoluteTimeGetCurrent()
+    let timeSinceLastApiCall = now - timerDouble
+    if (timeSinceLastApiCall < 60 * 60 * 24) {
+        return
+    }
+    // call api
+    callApi(completed: {
+       let now1 = CFAbsoluteTimeGetCurrent()
+       ud.set(now1, forKey: keyForSaveUd)
+    })
+}
+
+//func pushNotification

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -226,35 +225,59 @@
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="pLk-mV-5fd">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="guv-Fu-UBY">
-                                <color key="backgroundColor" red="1" green="0.34509803919999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bFD-qc-3iu">
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awr-yd-eW0">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="RFS-hp-pqn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="New Tonight">
+                                            <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-r8-25p">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="4B9-FG-JN1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="My Shows">
+                                            <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-8M-OJr">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="CXh-pP-T7w"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="All Shows">
+                                            <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="99I-3a-CkG" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leadingMargin" id="4K2-Eb-GMe"/>
                             <constraint firstAttribute="trailing" secondItem="JKP-BR-iMQ" secondAttribute="trailing" id="4n6-bW-URS"/>
                             <constraint firstItem="pLk-mV-5fd" firstAttribute="top" secondItem="JKP-BR-iMQ" secondAttribute="bottom" id="BL4-Zl-vl7"/>
+                            <constraint firstItem="bFD-qc-3iu" firstAttribute="top" secondItem="pLk-mV-5fd" secondAttribute="bottom" id="Ci7-Gk-9dZ"/>
                             <constraint firstItem="pLk-mV-5fd" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leading" id="Dfl-1q-geo"/>
-                            <constraint firstItem="99I-3a-CkG" firstAttribute="top" secondItem="guv-Fu-UBY" secondAttribute="bottom" constant="20" id="HVS-OL-7jc"/>
-                            <constraint firstItem="guv-Fu-UBY" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leading" id="JC0-cw-Bn9"/>
                             <constraint firstItem="99I-3a-CkG" firstAttribute="trailing" secondItem="nTZ-pm-ezQ" secondAttribute="trailingMargin" id="L5O-vO-MUf"/>
                             <constraint firstAttribute="trailing" secondItem="pLk-mV-5fd" secondAttribute="trailing" id="Lwg-Xo-28n"/>
                             <constraint firstItem="JKP-BR-iMQ" firstAttribute="top" secondItem="nTZ-pm-ezQ" secondAttribute="top" id="Npo-Os-N4T"/>
-                            <constraint firstItem="guv-Fu-UBY" firstAttribute="top" secondItem="pLk-mV-5fd" secondAttribute="bottom" id="m16-iN-mII"/>
+                            <constraint firstAttribute="trailing" secondItem="bFD-qc-3iu" secondAttribute="trailing" id="cf2-5z-ip2"/>
+                            <constraint firstItem="99I-3a-CkG" firstAttribute="top" secondItem="bFD-qc-3iu" secondAttribute="bottom" constant="18" id="fYI-un-nq3"/>
+                            <constraint firstItem="bFD-qc-3iu" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leading" id="nVS-hF-d0Y"/>
                             <constraint firstItem="aOf-VH-1If" firstAttribute="top" secondItem="99I-3a-CkG" secondAttribute="bottom" constant="20" id="oHV-qL-RpE"/>
-                            <constraint firstAttribute="trailing" secondItem="guv-Fu-UBY" secondAttribute="trailing" id="vim-Y7-zZT"/>
                             <constraint firstItem="JKP-BR-iMQ" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leading" id="wlT-0L-n5Y"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSc-iv-Gah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="357"/>
+            <point key="canvasLocation" x="732" y="356.67166416791605"/>
         </scene>
     </scenes>
 </document>

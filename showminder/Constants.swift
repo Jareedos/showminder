@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+typealias DownloadComplete = () -> ()
 
 let SHADOW_COLOR: CGFloat = 157.0 / 255.0
 
