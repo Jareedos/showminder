@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 
 class ViewController: UIViewController {
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
                             
                             if error != nil {
                                 print(error)
-                                self.showErrorAlert("Could not create account", msg: "Problem creating account. Try something else")
+                                self.showErrorAlert("Could not create account", msg: "Server error, Please try again. Password must be 6 characters or longer")
                             } else {
             
                                 
@@ -63,6 +64,11 @@ class ViewController: UIViewController {
                                 
                                         self.performSegue(withIdentifier: SEGUE_LOGGED_IN, sender: nil)
                                     
+                                    let userEmail = ["userEmal": email]
+                                    let userData = [ "provider", user?.providerID]
+                                    print(userData)
+                                    print(userEmail)
+                                    DataService.ds.createFirebaseDBUser(uid: (user?.uid)!, userEmail: userEmail)
 
                                     
                                    
@@ -73,7 +79,7 @@ class ViewController: UIViewController {
                   } else if error.code == INVALID_EMAIL_ADDRESS {
                         self.showErrorAlert("Could not login", msg: "Please enter a valid email")
                   } else if error.code == PASSWORD_ISNT_LONG_ENOUGH {
-                        self.showErrorAlert("Could not login", msg: "Please enter a vaild password of 6 characters or greater")
+                        self.showErrorAlert("Could not login", msg: "Please enter a vaild password of 6 characters or longer")
                   } else {
                         self.showErrorAlert("Could not login", msg: "Please check your username or password")
 //                    print(error)
