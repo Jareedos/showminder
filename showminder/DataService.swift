@@ -40,6 +40,7 @@ class DataService {
         REF_USERS.child(uid).updateChildValues(cableProvider)
         REF_USERS.child(uid).updateChildValues(timeZone)
     }
+    
 
 }
 

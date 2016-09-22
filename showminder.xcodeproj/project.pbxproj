@@ -19,6 +19,7 @@
 		BF26D4A11D63C28400C0267B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4A01D63C28400C0267B /* Assets.xcassets */; };
 		BF26D4A41D63C28400C0267B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4A21D63C28400C0267B /* LaunchScreen.storyboard */; };
 		BF26D4B11D63C72C00C0267B /* beyond_the_mountains.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */; };
+		BF4D08EA1D94984E0045791B /* TvShows.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08E91D94984E0045791B /* TvShows.swift */; };
 		BF9B0E441D8203BE008133C7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B0E431D8203BE008133C7 /* DataService.swift */; };
 		BFD2785C1D8B49CC00746CD8 /* TvShowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */; };
 		BFD2785E1D8CBE4500746CD8 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2785D1D8CBE4500746CD8 /* keys.swift */; };
@@ -41,6 +42,7 @@
 		BF26D4A31D63C28400C0267B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF26D4A51D63C28400C0267B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beyond_the_mountains.ttf; sourceTree = "<group>"; };
+		BF4D08E91D94984E0045791B /* TvShows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShows.swift; sourceTree = "<group>"; };
 		BF692A731D89D7AB0032F54C /* showminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = showminder.entitlements; sourceTree = "<group>"; };
 		BF9B0E431D8203BE008133C7 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShowApi.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */,
+				BF4D08E91D94984E0045791B /* TvShows.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				BF1113611D7FA8960061E014 /* MaterialTextField.swift in Sources */,
 				BF9B0E441D8203BE008133C7 /* DataService.swift in Sources */,
 				BF11135B1D7F7B820061E014 /* MaterialView.swift in Sources */,
+				BF4D08EA1D94984E0045791B /* TvShows.swift in Sources */,
 				BF26D49C1D63C28400C0267B /* ViewController.swift in Sources */,
 				BF26D49A1D63C28400C0267B /* AppDelegate.swift in Sources */,
 				BF11135D1D7F7C400061E014 /* Constants.swift in Sources */,

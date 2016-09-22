@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 
+
 class ViewController: UIViewController {
     @IBOutlet weak var emailTextField: MaterialTextField!
     @IBOutlet weak var passwordTextField: MaterialTextField!
@@ -70,7 +71,7 @@ class ViewController: UIViewController {
                                     
                         
                                     DataService.ds.createFirebaseDBUser(uid: (user?.uid)!, userEmail: userEmail, cableProvider: cableProvider, timeZone: timeZone)
-
+                                    
                                     
                                    
                                })
