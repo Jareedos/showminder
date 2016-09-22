@@ -35,8 +35,10 @@ class DataService {
     }
     
     
-    func createFirebaseDBUser(uid: String, userEmail: Dictionary<String, String>) {
+    func createFirebaseDBUser(uid: String, userEmail: Dictionary<String, String>, cableProvider: Dictionary<String, String>, timeZone: Dictionary<String, String>) {
         REF_USERS.child(uid).updateChildValues(userEmail)
+        REF_USERS.child(uid).updateChildValues(cableProvider)
+        REF_USERS.child(uid).updateChildValues(timeZone)
     }
 
 }

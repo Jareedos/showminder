@@ -65,10 +65,11 @@ class ViewController: UIViewController {
                                         self.performSegue(withIdentifier: SEGUE_LOGGED_IN, sender: nil)
                                     
                                     let userEmail = ["userEmal": email]
-                                    let userData = [ "provider", user?.providerID]
-                                    print(userData)
-                                    print(userEmail)
-                                    DataService.ds.createFirebaseDBUser(uid: (user?.uid)!, userEmail: userEmail)
+                                    let cableProvider = ["cableProvider": "nil"]
+                                    let timeZone = ["timeZone": "nil"]
+                                    
+                        
+                                    DataService.ds.createFirebaseDBUser(uid: (user?.uid)!, userEmail: userEmail, cableProvider: cableProvider, timeZone: timeZone)
 
                                     
                                    
