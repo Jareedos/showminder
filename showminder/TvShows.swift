@@ -36,7 +36,7 @@ class TvShow {
         return _episodeTitle
     }
     
-    var showTitle: String {
+    var showTime: String {
         return _showTime
     }
     
@@ -50,5 +50,17 @@ class TvShow {
     
     var date: String {
         return _date
+    }
+    
+    init(name: String, episodeNumber: Int, seasonNumber: Int, episodeTitle: String, showtime: String, channel: String, dayOfTheWeek: String, date: String) {
+        self._name = name
+        self._episodeNumber = episodeNumber
+        self._seasonNumber = seasonNumber
+        self._episodeTitle = episodeTitle
+        self._showTime = showTime
+        self._channel = channel
+        self._dayOfTheWeek = dayOfTheWeek
+        self._date = date
+        
     }
 }
