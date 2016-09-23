@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class TvShow {
     
@@ -61,6 +62,23 @@ class TvShow {
         self._channel = channel
         self._dayOfTheWeek = dayOfTheWeek
         self._date = date
+        
+    }
+    
+    func createShows(completed: @escaping DownloadComplete) {
+        
+        Alamofire.request("https://www.parsehub.com/api/v2/projects/\(projectToken)/last_ready_run/data?api_key=\(apiAccessToken)&format=json").responseJSON
+            { response in
+                
+                if let result = response.result.value {
+                    //let JSON = result as! NSDictionary
+                    //print(JSON)
+                    completed()
+                }
+                
+                //        print("result of calling to api is: ", result, " data: ", response.data)
+                
+        }
         
     }
 }
