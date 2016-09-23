@@ -15,6 +15,12 @@ class ShowCell: UICollectionViewCell {
     
     var show: TvShow!
     
+    required init?(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)
+        
+        layer.cornerRadius = 5.0
+    }
+    
     func configureCell(show: TvShow) {
         self.show = show
         
