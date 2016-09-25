@@ -57,7 +57,7 @@
                                             <constraint firstAttribute="width" constant="300" id="oyN-uu-Ucm"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="BeyondTheMountains" family="Beyond The Mountains" pointSize="56"/>
-                                        <color key="textColor" red="0.0039215686274509803" green="0.3411764705882353" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -98,7 +98,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTB-fc-HxE" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.31764705879999999" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="XGp-r6-FHw"/>
                                             <constraint firstAttribute="width" constant="160" id="ppB-gk-0ak"/>
@@ -176,17 +176,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKP-BR-iMQ">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yy3-Bl-ob3">
+                                        <fontDescription key="fontDescription" name="BeyondTheMountains" family="Beyond The Mountains" pointSize="29"/>
+                                        <color key="textColor" red="0.99599358969999996" green="0.99599358969999996" blue="0.99599358969999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0039215686274509803" green="0.3411764705882353" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Yy3-Bl-ob3" secondAttribute="trailing" constant="100" id="AhA-3X-QrH"/>
+                                    <constraint firstItem="Yy3-Bl-ob3" firstAttribute="top" secondItem="JKP-BR-iMQ" secondAttribute="top" constant="6" id="HNC-3T-rjr"/>
                                     <constraint firstAttribute="height" constant="60" id="Kwi-7h-nlr"/>
+                                    <constraint firstItem="Yy3-Bl-ob3" firstAttribute="leading" secondItem="JKP-BR-iMQ" secondAttribute="leading" constant="100" id="aEL-ea-6Nv"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yy3-Bl-ob3" secondAttribute="bottom" constant="-5" id="atu-Fa-Ful"/>
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="pLk-mV-5fd">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bFD-qc-3iu">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bFD-qc-3iu">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awr-yd-eW0">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awr-yd-eW0" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
+                                        <color key="backgroundColor" red="0.7234538613" green="0.7234538613" blue="0.7234538613" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="RFS-hp-pqn"/>
                                         </constraints>
@@ -195,7 +207,7 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-r8-25p">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-r8-25p" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="4B9-FG-JN1"/>
                                         </constraints>
@@ -204,7 +216,7 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-8M-OJr">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-8M-OJr" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="CXh-pP-T7w"/>
                                         </constraints>
@@ -216,7 +228,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="99I-3a-CkG">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fvw-Uh-mlh">
                                     <size key="itemSize" width="110" height="110"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -233,7 +245,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JJ7-qL-SWA"/>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8g-RG-IOW">
-                                                    <color key="backgroundColor" red="0.0039215686274509803" green="0.3411764705882353" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="ybW-bB-Y5k"/>
                                                     </constraints>
@@ -271,9 +283,9 @@
                             <constraint firstItem="99I-3a-CkG" firstAttribute="trailing" secondItem="nTZ-pm-ezQ" secondAttribute="trailingMargin" id="L5O-vO-MUf"/>
                             <constraint firstAttribute="trailing" secondItem="pLk-mV-5fd" secondAttribute="trailing" id="Lwg-Xo-28n"/>
                             <constraint firstItem="JKP-BR-iMQ" firstAttribute="top" secondItem="nTZ-pm-ezQ" secondAttribute="top" id="Npo-Os-N4T"/>
-                            <constraint firstAttribute="trailing" secondItem="bFD-qc-3iu" secondAttribute="trailing" id="cf2-5z-ip2"/>
+                            <constraint firstAttribute="trailing" secondItem="bFD-qc-3iu" secondAttribute="trailing" constant="7" id="cf2-5z-ip2"/>
                             <constraint firstItem="99I-3a-CkG" firstAttribute="top" secondItem="bFD-qc-3iu" secondAttribute="bottom" constant="18" id="fYI-un-nq3"/>
-                            <constraint firstItem="bFD-qc-3iu" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leading" id="nVS-hF-d0Y"/>
+                            <constraint firstItem="bFD-qc-3iu" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leading" constant="7" id="nVS-hF-d0Y"/>
                             <constraint firstItem="aOf-VH-1If" firstAttribute="top" secondItem="99I-3a-CkG" secondAttribute="bottom" constant="20" id="oHV-qL-RpE"/>
                             <constraint firstItem="JKP-BR-iMQ" firstAttribute="leading" secondItem="nTZ-pm-ezQ" secondAttribute="leading" id="wlT-0L-n5Y"/>
                         </constraints>
@@ -284,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSc-iv-Gah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826" y="347"/>
+            <point key="canvasLocation" x="833" y="357"/>
         </scene>
     </scenes>
 </document>

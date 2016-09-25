@@ -9,7 +9,9 @@
 import Foundation
 import Firebase
 
+
 let URL_BASE = FIRDatabase.database().reference()
+let STORAGE_BASE = FIRStorage.storage().reference()
 
 class DataService {
     static let ds = DataService()
@@ -39,6 +41,10 @@ class DataService {
         REF_USERS.child(uid).updateChildValues(userEmail)
         REF_USERS.child(uid).updateChildValues(cableProvider)
         REF_USERS.child(uid).updateChildValues(timeZone)
+    }
+    
+    func createFirebaseShows(){
+        
     }
     
 

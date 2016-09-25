@@ -14,10 +14,11 @@ func callApi(completed: @escaping DownloadComplete) {
     Alamofire.request("https://www.parsehub.com/api/v2/projects/\(projectToken)/last_ready_run/data?api_key=\(apiAccessToken)&format=json").responseJSON
         { response in
             
-            if let result = response.result.value {
-                //let JSON = result as! NSDictionary
-                //print(JSON)
+            if let dict = response.result.value as? Dictionary<String, AnyObject> {
+                if let name = dict["results"]?["tvShows"] {
+                print(name)
                 completed()
+                }
             }
             
             //        print("result of calling to api is: ", result, " data: ", response.data)

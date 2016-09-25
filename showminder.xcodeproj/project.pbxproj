@@ -22,6 +22,7 @@
 		BF4D08EA1D94984E0045791B /* TvShows.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08E91D94984E0045791B /* TvShows.swift */; };
 		BF4D08EC1D94CDDD0045791B /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08EB1D94CDDD0045791B /* ShowCell.swift */; };
 		BF4D08F01D94D1B00045791B /* ShowsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08EF1D94D1B00045791B /* ShowsVC.swift */; };
+		BF4D08F61D95AAE90045791B /* ShowDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08F51D95AAE90045791B /* ShowDetailVC.swift */; };
 		BF9B0E441D8203BE008133C7 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B0E431D8203BE008133C7 /* DataService.swift */; };
 		BFD2785C1D8B49CC00746CD8 /* TvShowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */; };
 		BFD2785E1D8CBE4500746CD8 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2785D1D8CBE4500746CD8 /* keys.swift */; };
@@ -47,6 +48,7 @@
 		BF4D08E91D94984E0045791B /* TvShows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShows.swift; sourceTree = "<group>"; };
 		BF4D08EB1D94CDDD0045791B /* ShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
 		BF4D08EF1D94D1B00045791B /* ShowsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowsVC.swift; sourceTree = "<group>"; };
+		BF4D08F51D95AAE90045791B /* ShowDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDetailVC.swift; sourceTree = "<group>"; };
 		BF692A731D89D7AB0032F54C /* showminder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = showminder.entitlements; sourceTree = "<group>"; };
 		BF9B0E431D8203BE008133C7 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShowApi.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			children = (
 				BF26D49B1D63C28400C0267B /* ViewController.swift */,
 				BF4D08EF1D94D1B00045791B /* ShowsVC.swift */,
+				BF4D08F51D95AAE90045791B /* ShowDetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				BF11135D1D7F7C400061E014 /* Constants.swift in Sources */,
 				BF11135F1D7F7FA00061E014 /* MaterialBtn.swift in Sources */,
 				BF4D08EC1D94CDDD0045791B /* ShowCell.swift in Sources */,
+				BF4D08F61D95AAE90045791B /* ShowDetailVC.swift in Sources */,
 				BFD2785C1D8B49CC00746CD8 /* TvShowApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

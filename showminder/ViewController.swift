@@ -28,6 +28,12 @@ class ViewController: UIViewController {
     
     }
     
+    override func awakeFromNib() {
+        callApi(completed: {
+          
+        })
+    }
+    
     func didTapOnBackground() {
         self.view.endEditing(true)
     }

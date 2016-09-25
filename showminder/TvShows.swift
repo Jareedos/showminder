@@ -71,9 +71,11 @@ class TvShow {
             { response in
                 
                 if let result = response.result.value {
-                    //let JSON = result as! NSDictionary
-                    //print(JSON)
+                    let JSON = result as! NSDictionary
+                    print(JSON)
+                    
                     completed()
+                  
                 }
                 
                 //        print("result of calling to api is: ", result, " data: ", response.data)
