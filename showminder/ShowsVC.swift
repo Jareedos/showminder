@@ -34,7 +34,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as? ShowCell {
             let tvShow = items[indexPath.item]
             
-            cell.showImg.image = nil // default image / placeholder
+            cell.showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
             cell.showImg.af_cancelImageRequest()
             if let imageURL = tvShow.imageURL {
                 cell.showImg.af_setImage(withURL: imageURL)
