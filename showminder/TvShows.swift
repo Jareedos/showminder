@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import FirebaseDatabase
 
 class TvShow {
     
@@ -53,6 +54,8 @@ class TvShow {
         return _date
     }
     
+    var imageURL: URL?
+    
     init(name: String, episodeNumber: Int, seasonNumber: Int, episodeTitle: String, showtime: String, channel: String, dayOfTheWeek: String, date: String) {
         self._name = name
         self._episodeNumber = episodeNumber
@@ -63,6 +66,21 @@ class TvShow {
         self._dayOfTheWeek = dayOfTheWeek
         self._date = date
         
+    }
+    
+    init(snapshot: FIRDataSnapshot) {
+        let value = snapshot.value as! NSDictionary
+        self._name = value["name"] as? String ?? ""
+        self._episodeNumber = value["episodeNumber"] as? Int ?? 0
+        self._seasonNumber = value["seasonNumber"] as? Int ?? 0
+        self._episodeTitle = value["episodeTitle"] as? String ?? ""
+        self._showTime = value["showTime"] as? String ?? ""
+        self._channel = value["channel"] as? String ?? ""
+        self._dayOfTheWeek = value["dayOfTheWeek"] as? String ?? ""
+        self._date = value["date"] as? String ?? ""
+        if let image = value["image"] as? String {
+            imageURL = URL(string: image)
+        }
     }
     
     func createShows(completed: @escaping DownloadComplete) {
@@ -83,4 +101,6 @@ class TvShow {
         }
         
     }
+    
+
 }

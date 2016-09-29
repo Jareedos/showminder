@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import AlamofireImage
 
 class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collection: UICollectionView!
 
+    var items = [TvShow]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,10 +23,22 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         collection.delegate = self
 
         // Do any additional setup after loading the view.
+        FIRDatabase.database().reference().child("shows").observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+            let tvShow = TvShow(snapshot: snapshot)
+            self.items.append(tvShow)
+            self.collection.reloadData()
+            }, withCancel: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as? ShowCell {
+            let tvShow = items[indexPath.item]
+            
+            cell.showImg.image = nil // default image / placeholder
+            cell.showImg.af_cancelImageRequest()
+            if let imageURL = tvShow.imageURL {
+                cell.showImg.af_setImage(withURL: imageURL)
+            }
             return cell
         } else {
             return UICollectionViewCell()
@@ -34,7 +50,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return items.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 
 let URL_BASE = FIRDatabase.database().reference()
@@ -19,6 +20,11 @@ class DataService {
     private var _REF_BASE = URL_BASE
     private var _REF_USERS = URL_BASE.child("users")
     private var _REF_SHOWS = URL_BASE.child("shows")
+    private var _REF_SHOW_IMAGES = STORAGE_BASE.child("show-images")
+    
+    var REF_SHOW_IMAGES: FIRStorageReference {
+        return _REF_SHOW_IMAGES
+    }
 
     var REF_BASE: FIRDatabaseReference {
         return _REF_BASE

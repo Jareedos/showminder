@@ -29,9 +29,10 @@ class ViewController: UIViewController {
     }
     
     override func awakeFromNib() {
-        callApi(completed: {
-          
-        })
+//        FIRApp.configure()
+//        callApi(completed: {
+//          
+//        })
     }
     
     func didTapOnBackground() {
