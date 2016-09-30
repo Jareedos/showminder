@@ -292,6 +292,7 @@
                     </view>
                     <connections>
                         <outlet property="collection" destination="99I-3a-CkG" id="oyz-0h-pMB"/>
+                        <segue destination="NJd-sC-wug" kind="show" identifier="ShowDetailVC" id="pkM-Qc-ARu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rSc-iv-Gah" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -314,7 +315,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkL-xD-Gyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524" y="357"/>
+            <point key="canvasLocation" x="1634" y="357"/>
         </scene>
     </scenes>
 </document>
