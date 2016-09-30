@@ -54,13 +54,21 @@ func callApi(completed: @escaping DownloadComplete) {
                                         showId = showId.replacingOccurrences(of: "]", with: "")
                                         
                                         var showToSave = show
-                                        if let date = show["date"] as? String {
-                                            let dateComponents = date.components(separatedBy: " ")
+                                        if let dateString = show["date"] as? String, let timeString = show["showTime"] as? String {
+                                            let dateComponents = dateString.components(separatedBy: " ")
                                             if dateComponents.count == 2 {
+                                                let dateFormatter = DateFormatter()
+                                                dateFormatter.dateFormat = "h:mm a EEEE M/d/y"
+                                                dateFormatter.timeZone = TimeZone(abbreviation: "EST")
+                                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                                                let date = dateFormatter.date(from: "\(timeString) \(dateString)")
+                                                
                                                 showToSave["showingDay"] = dateComponents[0]
                                                 showToSave["date"] = dateComponents[1]
                                             }
                                         }
+                                        
+                                        
                                         showToSave["image"] = nil // removing the image field
                                         
                                         reference.child(showId).updateChildValues(showToSave)
@@ -69,8 +77,10 @@ func callApi(completed: @escaping DownloadComplete) {
                                             if let fileName = imageFileNames[fileNameKey] as? String {
                                                 
                                                 let name = (fileName.replacingOccurrences(of: "_", with: "") as NSString)
-                                                let limit : Int = min(name.length, showId.characters.count, 4)
+                                                
+                                                let limit : Int = min(name.length, showId.characters.count, 5)
                                                 let showMatchingString1 = name.substring(to: limit).lowercased()
+
                                                 let showMatchingString2 = (showId as NSString).substring(to: limit).lowercased()
                                                 if showMatchingString1 == showMatchingString2 {
                                                     // Match found!!
@@ -129,7 +139,9 @@ func checkForUpdateTimestamp(completion: @escaping (_ shouldUpdate: Bool)->Void)
     FIRDatabase.database().reference().child("lastUpdated").observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
         if let timestampValue = snapshot.value as? Double {
             let date = Date(timeIntervalSince1970: timestampValue)
+//            print(date)
             let expirationDate = Date(timeIntervalSinceNow: -24*60*60)
+//            print(expirationDate)
             let shouldUpdate = expirationDate.compare(date) == .orderedDescending
             completion(shouldUpdate)
         }

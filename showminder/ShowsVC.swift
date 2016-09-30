@@ -15,6 +15,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var collection: UICollectionView!
 
     var items = [TvShow]()
+    var tonightsShows = [TvShow] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,32 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         collection.delegate = self
 
         // Do any additional setup after loading the view.
-        FIRDatabase.database().reference().child("shows").observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M/d/y"
+        let date = dateFormatter.string(from: Date())
+        
+        let showsRef = FIRDatabase.database().reference().child("shows")
+        let tonightQuery = showsRef.queryOrdered(byChild: "date").queryEqual(toValue: date)
+//        let allQuery = showsRef
+//        let myQuery = showsRef
+        
+        tonightQuery.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+
             let tvShow = TvShow(snapshot: snapshot)
+                
+            self.items.sort(by: {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm a"
+                guard
+                    let dateA = formatter.date(from: $0.0.showTime),
+                    let dateB = formatter.date(from: $0.1.showTime)
+                else {
+                    return false
+                }
+                return dateA < dateB
+            })
+            
             self.items.append(tvShow)
             self.collection.reloadData()
             }, withCancel: nil)
@@ -33,7 +58,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as? ShowCell {
             let tvShow = items[indexPath.item]
-            
+            cell.shownameLbl.text = tvShow.name
             cell.showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
             cell.showImg.af_cancelImageRequest()
             if let imageURL = tvShow.imageURL {
@@ -58,7 +83,11 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170, height: 170)
+        return CGSize(width: 160, height: 160)
     }
+    
+//    func switchDate(tvShow) {
+//        
+//    }
 
 }
