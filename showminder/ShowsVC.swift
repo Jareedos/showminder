@@ -10,18 +10,21 @@ import UIKit
 import FirebaseDatabase
 import AlamofireImage
 
-class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
 
-    var items = [TvShow]()
+    var filterdShows = [TvShow]()
     var tonightsShows = [TvShow] ()
+    var searchMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collection.dataSource = self
         collection.delegate = self
+        searchBar.delegate = self
 
         // Do any additional setup after loading the view.
         
@@ -38,7 +41,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
 
             let tvShow = TvShow(snapshot: snapshot)
                 
-            self.items.sort(by: {
+            self.tonightsShows.sort(by: {
                 let formatter = DateFormatter()
                 formatter.dateFormat = "h:mm a"
                 guard
@@ -50,19 +53,31 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
                 return dateA < dateB
             })
             
-            self.items.append(tvShow)
+            self.tonightsShows.append(tvShow)
             self.collection.reloadData()
             }, withCancel: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as? ShowCell {
-            let tvShow = items[indexPath.item]
-            cell.shownameLbl.text = tvShow.name
-            cell.showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
-            cell.showImg.af_cancelImageRequest()
-            if let imageURL = tvShow.imageURL {
-                cell.showImg.af_setImage(withURL: imageURL)
+            
+            if searchMode {
+                let tvShow = filterdShows[indexPath.item]
+                cell.shownameLbl.text = tvShow.name
+                cell.showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
+                cell.showImg.af_cancelImageRequest()
+                if let imageURL = tvShow.imageURL {
+                    cell.showImg.af_setImage(withURL: imageURL)
+                }
+            } else {
+                let tvShow = tonightsShows[indexPath.item]
+                cell.shownameLbl.text = tvShow.name
+                cell.showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
+                cell.showImg.af_cancelImageRequest()
+                if let imageURL = tvShow.imageURL {
+                    cell.showImg.af_setImage(withURL: imageURL)
+                }
+                
             }
             return cell
         } else {
@@ -75,7 +90,10 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        if searchMode {
+            return filterdShows.count
+        }
+        return tonightsShows.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -86,8 +104,17 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         return CGSize(width: 160, height: 160)
     }
     
-//    func switchDate(tvShow) {
-//        
-//    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            searchMode = false
+            collection.reloadData()
+        } else {
+            searchMode = true
+            let lower = searchBar.text!.lowercased()
+            filterdShows = tonightsShows.filter({$0.name.range(of: lower) != nil})
+            collection.reloadData()
+        }
+        
+    }
 
 }

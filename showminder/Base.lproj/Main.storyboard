@@ -192,7 +192,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Yy3-Bl-ob3" secondAttribute="bottom" constant="-5" id="atu-Fa-Ful"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="pLk-mV-5fd">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search Tonights Shows" translatesAutoresizingMaskIntoConstraints="NO" id="pLk-mV-5fd">
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bFD-qc-3iu">
@@ -292,6 +292,7 @@
                     </view>
                     <connections>
                         <outlet property="collection" destination="99I-3a-CkG" id="oyz-0h-pMB"/>
+                        <outlet property="searchBar" destination="pLk-mV-5fd" id="m8O-ze-QjX"/>
                         <segue destination="NJd-sC-wug" kind="show" identifier="ShowDetailVC" id="pkM-Qc-ARu"/>
                     </connections>
                 </viewController>
