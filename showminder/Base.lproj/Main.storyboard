@@ -298,5 +298,23 @@
             </objects>
             <point key="canvasLocation" x="832.79999999999995" y="356.67166416791605"/>
         </scene>
+        <!--Show DetailVC-->
+        <scene sceneID="Uiv-at-EG0">
+            <objects>
+                <viewController id="NJd-sC-wug" customClass="ShowDetailVC" customModule="showminder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="I0o-e0-2MZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="KTh-J8-F7n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L4a-Ey-NCx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TkL-xD-Gyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1524" y="357"/>
+        </scene>
     </scenes>
 </document>
