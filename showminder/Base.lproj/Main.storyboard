@@ -207,7 +207,7 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="newTongihtBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="gSy-z3-z9g"/>
+                                            <action selector="tabBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="TrL-fL-dU3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-r8-25p" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
@@ -219,7 +219,7 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="myShownBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="zI7-SL-8Hz"/>
+                                            <action selector="tabBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="FKB-Oi-6Ei"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-8M-OJr" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
@@ -231,7 +231,7 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="allShowsBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="hYx-BN-HIQ"/>
+                                            <action selector="tabBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="5Eb-v0-szK"/>
                                         </connections>
                                     </button>
                                 </subviews>

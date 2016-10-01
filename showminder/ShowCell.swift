@@ -27,11 +27,11 @@ class ShowCell: UICollectionViewCell {
         self.show = show
         
         shownameLbl.text = self.show.name.capitalized
-//        showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
-//        showImg.af_cancelImageRequest()
-//        if let imageURL = show.imageURL {
-//            showImg.af_setImage(withURL: imageURL)
-//        }
+        showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
+        showImg.af_cancelImageRequest()
+        if let imageURL = show.imageURL {
+            showImg.af_setImage(withURL: imageURL)
+        }
     }
 
 

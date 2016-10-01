@@ -17,13 +17,12 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     @IBOutlet weak var newTonightBtn: MaterialBtn!
     @IBOutlet weak var myShowBtn: MaterialBtn!
     @IBOutlet weak var allShowsBtn: MaterialBtn!
+    
+    var selectedBtn: UIButton!// The currently selected button, always non-nil
 
     var filterdShows = [TvShow]()
-    var tonightsShows = [TvShow] ()
+    var tvShowsArray = [TvShow] ()
     var searchMode = false
-    var newTonightBtnClicked = true
-    var myShowsBtnClicked = false
-    var AllShowsBtnClicked = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,35 +32,69 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         searchBar.delegate = self
 
         // Do any additional setup after loading the view.
+//        
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "M/d/y"
+//        let date = dateFormatter.string(from: Date())
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M/d/y"
-        let date = dateFormatter.string(from: Date())
         
-        let showsRef = FIRDatabase.database().reference().child("shows")
-        let tonightQuery = showsRef.queryOrdered(byChild: "date").queryEqual(toValue: date)
-//        let allQuery = showsRef
+//        let tonightQuery = showsRef.queryOrdered(byChild: "date").queryEqual(toValue: date)
 //        let myQuery = showsRef
+        selectedBtn = newTonightBtn
+        refreshContent()
+    }
+    
+    let showsRef = FIRDatabase.database().reference().child("shows")
+    var showHandle: FIRDatabaseHandle?
+    
+    func refreshContent() {
         
-        tonightQuery.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
-
-            let tvShow = TvShow(snapshot: snapshot)
+        if let showHandle = showHandle {
+            showsRef.removeObserver(withHandle: showHandle)
+        }
+        self.tvShowsArray.removeAll()
+    
+        switch selectedBtn {
+        case newTonightBtn:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "M/d/y"
+            let date = dateFormatter.string(from: Date())
+            let tonightQuery = showsRef.queryOrdered(byChild: "date").queryEqual(toValue: date)
+            showHandle = tonightQuery.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
                 
-            self.tonightsShows.sort(by: {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "h:mm a"
-                guard
-                    let dateA = formatter.date(from: $0.0.showTime),
-                    let dateB = formatter.date(from: $0.1.showTime)
-                else {
-                    return false
-                }
-                return dateA < dateB
+                let tvShow = TvShow(snapshot: snapshot)
+                
+                self.tvShowsArray.sort(by: {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "h:mm a"
+                    guard
+                        let dateA = formatter.date(from: $0.0.showTime),
+                        let dateB = formatter.date(from: $0.1.showTime)
+                        else {
+                            return false
+                    }
+                    return dateA < dateB
+                })
+                
+                self.tvShowsArray.append(tvShow)
+                self.collection.reloadData()
+                }, withCancel: nil)
+            break
+        case allShowsBtn:
+            let showsRef = FIRDatabase.database().reference().child("shows")
+            let allShowsQuery = showsRef.queryOrdered(byChild: "name")
+            showHandle = allShowsQuery.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+                let tvShow = TvShow(snapshot: snapshot)
+                self.tvShowsArray.append(tvShow)
+                self.collection.reloadData()
             })
-            
-            self.tonightsShows.append(tvShow)
-            self.collection.reloadData()
-            }, withCancel: nil)
+            break
+        case myShowBtn:
+            break
+        default:
+            break
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -69,21 +102,10 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
             
             if searchMode {
                 let tvShow = filterdShows[indexPath.item]
-                cell.shownameLbl.text = tvShow.name
-                cell.showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
-                cell.showImg.af_cancelImageRequest()
-                if let imageURL = tvShow.imageURL {
-                    cell.showImg.af_setImage(withURL: imageURL)
-                }
+                cell.configureCell(show: tvShow)
             } else {
-                let tvShow = tonightsShows[indexPath.item]
-                cell.shownameLbl.text = tvShow.name
-                cell.showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
-                cell.showImg.af_cancelImageRequest()
-                if let imageURL = tvShow.imageURL {
-                    cell.showImg.af_setImage(withURL: imageURL)
-                }
-                
+                let tvShow = tvShowsArray[indexPath.item]
+                cell.configureCell(show: tvShow)
             }
             return cell
         }else {
@@ -99,7 +121,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         if searchMode {
             return filterdShows.count
         }
-        return tonightsShows.count
+        return tvShowsArray.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -117,44 +139,22 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         } else {
             searchMode = true
             let lower = searchBar.text!.lowercased()
-            filterdShows = tonightsShows.filter({$0.name.range(of: lower) != nil})
+            filterdShows = tvShowsArray.filter({$0.name.lowercased().range(of: lower) != nil})
             collection.reloadData()
         }
         
     }
     
-    @IBAction func newTongihtBtnClicked(_ sender: AnyObject) {
-        newTonightBtnClicked = true
-        myShowsBtnClicked = false
-        AllShowsBtnClicked = false
-        
-        newTonightBtn.backgroundColor = UIColor.lightGray
-        myShowBtn.backgroundColor = UIColor.clear
-        allShowsBtn.backgroundColor = UIColor.clear
-        
-        
-    }
-
-    @IBAction func myShownBtnClicked(_ sender: UIButton) {
-        myShowsBtnClicked = true
-        newTonightBtnClicked = false
-        AllShowsBtnClicked = false
-        
-        newTonightBtn.backgroundColor = UIColor.clear
-        myShowBtn.backgroundColor = UIColor.lightGray
-        allShowsBtn.backgroundColor = UIColor.clear
-        
-        
-    }
     
-    @IBAction func allShowsBtnClicked(_ sender: UIButton) {
-        AllShowsBtnClicked = true
-        newTonightBtnClicked = false
-        myShowsBtnClicked = true
+    @IBAction func tabBtnClicked(_ newlySelectedButton: UIButton) {
+        if let lastButton = selectedBtn {
+            lastButton.backgroundColor = UIColor.clear
+        }
         
-        newTonightBtn.backgroundColor = UIColor.clear
-        myShowBtn.backgroundColor = UIColor.clear
-        allShowsBtn.backgroundColor = UIColor.lightGray
+        newlySelectedButton.backgroundColor = UIColor.showMinderGray
+        selectedBtn = newlySelectedButton
+        
+        refreshContent()
     }
     
     
