@@ -206,6 +206,9 @@
                                         <state key="normal" title="New Tonight">
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="newShowBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="3yk-0X-ZDv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-r8-25p" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
                                         <constraints>
@@ -215,6 +218,9 @@
                                         <state key="normal" title="My Shows">
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="myShownBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="zI7-SL-8Hz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Knn-8M-OJr" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
                                         <constraints>
@@ -224,6 +230,9 @@
                                         <state key="normal" title="All Shows">
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="allShowsBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="hYx-BN-HIQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -291,7 +300,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="allShowsBtn" destination="Knn-8M-OJr" id="Xcz-Xa-lSb"/>
                         <outlet property="collection" destination="99I-3a-CkG" id="oyz-0h-pMB"/>
+                        <outlet property="myShowBtn" destination="b11-r8-25p" id="s33-q6-smY"/>
+                        <outlet property="newTonightBtn" destination="awr-yd-eW0" id="Ooa-fU-7GV"/>
                         <outlet property="searchBar" destination="pLk-mV-5fd" id="m8O-ze-QjX"/>
                         <segue destination="NJd-sC-wug" kind="show" identifier="ShowDetailVC" id="pkM-Qc-ARu"/>
                     </connections>
