@@ -86,7 +86,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
                 
             }
             return cell
-        } else {
+        }else {
             return UICollectionViewCell()
         }
     }
@@ -123,22 +123,38 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         
     }
     
-    @IBAction func newShowBtnClicked(_ sender: AnyObject) {
+    @IBAction func newTongihtBtnClicked(_ sender: AnyObject) {
         newTonightBtnClicked = true
         myShowsBtnClicked = false
         AllShowsBtnClicked = false
+        
+        newTonightBtn.backgroundColor = UIColor.lightGray
+        myShowBtn.backgroundColor = UIColor.clear
+        allShowsBtn.backgroundColor = UIColor.clear
+        
+        
     }
 
     @IBAction func myShownBtnClicked(_ sender: UIButton) {
         myShowsBtnClicked = true
         newTonightBtnClicked = false
         AllShowsBtnClicked = false
+        
+        newTonightBtn.backgroundColor = UIColor.clear
+        myShowBtn.backgroundColor = UIColor.lightGray
+        allShowsBtn.backgroundColor = UIColor.clear
+        
+        
     }
     
     @IBAction func allShowsBtnClicked(_ sender: UIButton) {
         AllShowsBtnClicked = true
         newTonightBtnClicked = false
         myShowsBtnClicked = true
+        
+        newTonightBtn.backgroundColor = UIColor.clear
+        myShowBtn.backgroundColor = UIColor.clear
+        allShowsBtn.backgroundColor = UIColor.lightGray
     }
     
     

@@ -198,7 +198,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="bFD-qc-3iu">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awr-yd-eW0" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
-                                        <color key="backgroundColor" red="0.7234538613" green="0.7234538613" blue="0.7234538613" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="RFS-hp-pqn"/>
                                         </constraints>
@@ -207,7 +207,7 @@
                                             <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="newShowBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="3yk-0X-ZDv"/>
+                                            <action selector="newTongihtBtnClicked:" destination="ckq-xU-eBH" eventType="touchUpInside" id="gSy-z3-z9g"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-r8-25p" customClass="MaterialBtn" customModule="showminder" customModuleProvider="target">
