@@ -10,12 +10,20 @@ import UIKit
 
 class ShowDetailVC: UIViewController {
     var selectedTvShow: TvShow!
-    @IBOutlet weak var tvShowNameLbl: UILabel!
+
+    @IBOutlet weak var tvShowImg: UIImageView!
+    @IBOutlet weak var showTitleLbl: UILabel!
+    @IBOutlet weak var epidsodeTitleLbl: UILabel!
+    @IBOutlet weak var episodeNumberLbl: UILabel!
+    @IBOutlet weak var channelNameLbl: UILabel!
+    @IBOutlet weak var showDayLbl: UILabel!
+    @IBOutlet weak var showDateLbl: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tvShowNameLbl.text = selectedTvShow.name
+     
+        tvShowImg.image = selectedTvShow.imageURL
     }
 
   
