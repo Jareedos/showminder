@@ -16,12 +16,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var emailTextField: MaterialTextField!
     @IBOutlet weak var passwordTextField: MaterialTextField!
     
+    var typeMode = false
+    
 
   
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
         
         let tapgestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.didTapOnBackground))
         self.view.addGestureRecognizer(tapgestureRecognizer)
@@ -38,10 +41,8 @@ class ViewController: UIViewController {
     func didTapOnBackground() {
         self.view.endEditing(true)
     }
-
-
     
- 
+
     
     @IBAction func attemptLogin(_ sender: UIButton!) {
         
@@ -115,9 +116,7 @@ class ViewController: UIViewController {
             let action = UIAlertAction(title: "OK", style: .default , handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
-            
+        
         }
-
-
 }
 

@@ -9,13 +9,13 @@
 import UIKit
 
 class ShowDetailVC: UIViewController {
+    var selectedTvShow: TvShow!
+    @IBOutlet weak var tvShowNameLbl: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        TvShow.createShows(completed: DownloadComplete) {
-//            
-//        }
+        tvShowNameLbl.text = selectedTvShow.name
     }
 
   

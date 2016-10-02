@@ -116,7 +116,15 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       print("clicked")
+        var show: TvShow!
+        
+        if searchMode {
+            show = filterdShows[indexPath.row]
+        } else {
+            show = tvShowsArray[indexPath.row]
+        }
+        
+        performSegue(withIdentifier: "ShowDetailVC" , sender: show)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -165,6 +173,16 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         selectedBtn = newlySelectedButton
         
         refreshContent()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailVC" {
+            if let detailsVC = segue.destination as? ShowDetailVC {
+                if let tvShow = sender as? TvShow {
+                    detailsVC.selectedTvShow = tvShow
+                }
+            }
+        }
     }
     
     

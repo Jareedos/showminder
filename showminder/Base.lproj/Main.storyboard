@@ -323,8 +323,26 @@
                     <view key="view" contentMode="scaleToFill" id="L4a-Ey-NCx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mz0-1B-Zs0">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ZEf-CV-wu6"/>
+                                    <constraint firstAttribute="height" constant="200" id="hke-Wa-jh3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mz0-1B-Zs0" firstAttribute="centerX" secondItem="L4a-Ey-NCx" secondAttribute="centerX" id="Hux-en-Kgd"/>
+                            <constraint firstItem="Mz0-1B-Zs0" firstAttribute="centerY" secondItem="L4a-Ey-NCx" secondAttribute="centerY" id="JpZ-my-wsH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tvShowNameLbl" destination="Mz0-1B-Zs0" id="BRJ-nq-7py"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkL-xD-Gyo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
