@@ -30,6 +30,8 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         collection.dataSource = self
         collection.delegate = self
         searchBar.delegate = self
+        
+        searchBar.returnKeyType = UIReturnKeyType.done
 
         // Do any additional setup after loading the view.
 //        
@@ -136,6 +138,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         if searchBar.text == nil || searchBar.text == "" {
             searchMode = false
             collection.reloadData()
+            view.endEditing(true)
         } else {
             searchMode = true
             let lower = searchBar.text!.lowercased()
@@ -145,10 +148,17 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     
     @IBAction func tabBtnClicked(_ newlySelectedButton: UIButton) {
         if let lastButton = selectedBtn {
             lastButton.backgroundColor = UIColor.clear
+            view.endEditing(true)
+            searchMode = false
+            searchBar.text = " "
         }
         
         newlySelectedButton.backgroundColor = UIColor.showMinderGray
