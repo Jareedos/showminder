@@ -13,8 +13,8 @@ import FirebaseDatabase
 class TvShow {
     
     private var _name: String!
-    private var _episodeNumber: Int!
-    private var _seasonNumber: Int!
+    private var _episodeNumber: String!
+    private var _seasonNumber: String!
     private var _episodeTitle: String!
     private var _showTime: String!
     private var _channel: String!
@@ -26,11 +26,11 @@ class TvShow {
         return _name
     }
     
-    var episodeNumber: Int {
+    var episodeNumber: String {
         return _episodeNumber
     }
     
-    var seasonNumber: Int {
+    var seasonNumber: String {
         return _seasonNumber
     }
     
@@ -56,7 +56,7 @@ class TvShow {
     
     var imageURL: URL?
     
-    init(name: String, episodeNumber: Int, seasonNumber: Int, episodeTitle: String, showtime: String, channel: String, dayOfTheWeek: String, date: String) {
+    init(name: String, episodeNumber: String, seasonNumber: String, episodeTitle: String, showtime: String, channel: String, dayOfTheWeek: String, date: String) {
         self._name = name
         self._episodeNumber = episodeNumber
         self._seasonNumber = seasonNumber
@@ -71,8 +71,8 @@ class TvShow {
     init(snapshot: FIRDataSnapshot) {
         let value = snapshot.value as! NSDictionary
         self._name = value["name"] as? String ?? ""
-        self._episodeNumber = value["episodeNumber"] as? Int ?? 0
-        self._seasonNumber = value["seasonNumber"] as? Int ?? 0
+        self._episodeNumber = value["episodeNumber"] as? String ?? ""
+        self._seasonNumber = value["seasonNumber"] as? String ?? ""
         self._episodeTitle = value["episodeTitle"] as? String ?? ""
         self._showTime = value["showTime"] as? String ?? ""
         self._channel = value["channel"] as? String ?? ""
