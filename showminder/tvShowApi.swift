@@ -26,7 +26,7 @@ func callApi(completed: @escaping DownloadComplete) {
         Alamofire.request("https://www.parsehub.com/api/v2/projects/\(projectToken)/last_ready_run/data?api_key=\(apiAccessToken)&format=json").responseJSON
             { response in
                 
-                var imageFileNames = imageFileNames
+                let imageFileNames = imageFileNames
                 let keys = imageFileNames.allKeys as! [String]
                 
                 let reference = DataService.ds.REF_SHOWS
@@ -56,18 +56,12 @@ func callApi(completed: @escaping DownloadComplete) {
                                         var showToSave = show
                                         if let dateString = show["date"] as? String, let timeString = show["showTime"] as? String {
                                             let dateComponents = dateString.components(separatedBy: " ")
-                                            if dateComponents.count == 2 {
-                                                let dateFormatter = DateFormatter()
-                                                dateFormatter.dateFormat = "h:mm a EEEE M/d/y"
-                                                dateFormatter.timeZone = TimeZone(abbreviation: "EST")
-                                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                                                let date = dateFormatter.date(from: "\(timeString) \(dateString)")
-                                                
+                                            if (dateComponents.count == 2){
                                                 showToSave["showingDay"] = dateComponents[0]
                                                 showToSave["date"] = dateComponents[1]
                                             }
                                         }
-                                        
+                                    
                                         
                                         showToSave["image"] = nil // removing the image field
                                         

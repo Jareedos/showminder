@@ -22,18 +22,55 @@ class ShowDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         tvShowImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
         tvShowImg.af_cancelImageRequest()
         if let imageURL = selectedTvShow.imageURL {
             tvShowImg.af_setImage(withURL: imageURL)
         }
-        showTitleLbl.text = selectedTvShow.name
-        epidsodeTitleLbl.text = selectedTvShow.episodeTitle
-        episodeNumberLbl.text = selectedTvShow.episodeNumber
-        seasonNumberLbl.text = selectedTvShow.seasonNumber
-        channelNameLbl.text = selectedTvShow.channel
-        showDayLbl.text = selectedTvShow.dayOfTheWeek
-        showDateLbl.text = selectedTvShow.date
+        
+        if (selectedTvShow.name != ""){
+            showTitleLbl.text = selectedTvShow.name
+        } else {
+            showTitleLbl.text = "Not Available"
+        }
+        
+        if (selectedTvShow.episodeTitle != ""){
+            epidsodeTitleLbl.text = selectedTvShow.episodeTitle
+        } else {
+            epidsodeTitleLbl.text = "Not Available"
+        }
+        
+        if (selectedTvShow.episodeNumber != ""){
+            episodeNumberLbl.text = selectedTvShow.episodeNumber
+        } else {
+            episodeNumberLbl.text = "Not Available"
+        }
+        
+        if (selectedTvShow.seasonNumber != "") {
+            seasonNumberLbl.text = selectedTvShow.seasonNumber
+        } else {
+            seasonNumberLbl.text = "Not Available"
+        }
+        
+        if (selectedTvShow.channel != "") {
+            channelNameLbl.text = selectedTvShow.channel
+        } else {
+            channelNameLbl.text = "Not Available"
+        }
+        
+        if (selectedTvShow.dayOfTheWeek != "") {
+            showDayLbl.text = selectedTvShow.dayOfTheWeek
+        } else {
+            showDayLbl.text = "Not Available"
+        }
+        
+        if (selectedTvShow.date != "") {
+            showDateLbl.text = selectedTvShow.date
+        } else {
+            showDateLbl.text = "Not Available"
+        }
         
         print(selectedTvShow.showTime)
         print(selectedTvShow.episodeTitle)
