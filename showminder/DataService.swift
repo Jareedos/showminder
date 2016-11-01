@@ -17,26 +17,14 @@ let STORAGE_BASE = FIRStorage.storage().reference()
 class DataService {
     static let ds = DataService()
     
-    private var _REF_BASE = URL_BASE
-    private var _REF_USERS = URL_BASE.child("users")
-    private var _REF_SHOWS = URL_BASE.child("shows")
-    private var _REF_SHOW_IMAGES = STORAGE_BASE.child("show-images")
-    
-    var REF_SHOW_IMAGES: FIRStorageReference {
-        return _REF_SHOW_IMAGES
-    }
-
-    var REF_BASE: FIRDatabaseReference {
-        return _REF_BASE
-    }
-    
-    var REF_USERS: FIRDatabaseReference {
-        return _REF_USERS
-    }
-    
-    var REF_SHOWS: FIRDatabaseReference {
-        return _REF_SHOWS
-    }
+    let REF_BASE = URL_BASE
+    let REF_USERS = URL_BASE.child("users")
+    let REF_SHOWS = URL_BASE.child("shows")
+    let REF_SHOWS_BY_FOLLOWER = URL_BASE.child("showsByFollower")
+    let REF_EPISODES_BY_DATE = URL_BASE.child("episodesByDate")
+    let REF_EPISODES_BY_SHOW = URL_BASE.child("episodesByShow")
+    let REF_EPISODES_NEXT = URL_BASE.child("episodesNext")
+    let REF_SHOW_IMAGES = STORAGE_BASE.child("show-images")
     
     var mainRef: FIRDatabaseReference {
         return FIRDatabase.database().reference()

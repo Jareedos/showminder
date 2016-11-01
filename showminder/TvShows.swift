@@ -11,76 +11,34 @@ import Alamofire
 import FirebaseDatabase
 
 class TvShow {
+    var key = ""
     
-    private var _name: String!
-    private var _episodeNumber: String!
-    private var _seasonNumber: String!
-    private var _episodeTitle: String!
-    private var _showTime: String!
-    private var _channel: String!
-    private var _dayOfTheWeek: String!
-    private var _date: String!
-    
-    
-    var name: String {
-        return _name
-    }
-    
-    var episodeNumber: String {
-        return _episodeNumber
-    }
-    
-    var seasonNumber: String {
-        return _seasonNumber
-    }
-    
-    var episodeTitle: String {
-        return _episodeTitle
-    }
-    
-    var showTime: String {
-        return _showTime
-    }
-    
-    var channel: String {
-        return _channel
-    }
-    
-    var dayOfTheWeek: String {
-        return _dayOfTheWeek
-    }
-    
-    var date: String {
-        return _date
-    }
-    
+    let name: String
+    let seasonNumber: String
+    let showTime: String
+    let channel: String
+    let dayOfTheWeek: String
+    let episodeNumber: String
+    let episodeTitle: String
+    let episodeDate: String
     var imageURL: URL?
-    
-    init(name: String, episodeNumber: String, seasonNumber: String, episodeTitle: String, showtime: String, channel: String, dayOfTheWeek: String, date: String) {
-        self._name = name
-        self._episodeNumber = episodeNumber
-        self._seasonNumber = seasonNumber
-        self._episodeTitle = episodeTitle
-        self._showTime = showTime
-        self._channel = channel
-        self._dayOfTheWeek = dayOfTheWeek
-        self._date = date
-        
-    }
     
     init(snapshot: FIRDataSnapshot) {
         let value = snapshot.value as! NSDictionary
-        self._name = value["name"] as? String ?? ""
-        self._episodeNumber = value["episodeNumber"] as? String ?? ""
-        self._seasonNumber = value["seasonNumber"] as? String ?? ""
-        self._episodeTitle = value["episodeTitle"] as? String ?? ""
-        self._showTime = value["showTime"] as? String ?? ""
-        self._channel = value["channel"] as? String ?? ""
-        self._dayOfTheWeek = value["dayOfTheWeek"] as? String ?? ""
-        self._date = value["date"] as? String ?? ""
+        self.key = snapshot.key
+        self.name = value["name"] as? String ?? "Not Available"
+        self.seasonNumber = value["seasonNumber"] as? String ?? "Not Available"
+        self.showTime = value["showTime"] as? String ?? "Not Available"
+        self.channel = value["channel"] as? String ?? "Not Available"
+        self.dayOfTheWeek = value["showingDay"] as? String ?? "Not Available"
         if let image = value["image"] as? String {
             imageURL = URL(string: image)
         }
+        
+        
+        self.episodeNumber = value["episodeNumber"] as? String ?? ""
+        self.episodeTitle = value["episodeTitle"] as? String ?? ""
+        self.episodeDate = value["episodeDate"] as? String ?? ""
     }
     
     func createShows(completed: @escaping DownloadComplete) {
@@ -95,8 +53,7 @@ class TvShow {
                     completed()
                   
                 }
-                
-                //        print("result of calling to api is: ", result, " data: ", response.data)
+             
                 
         }
         

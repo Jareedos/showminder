@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ShowCell: UICollectionViewCell {
     
     @IBOutlet weak var showImg: UIImageView!
     @IBOutlet weak var shownameLbl: UILabel!
     
-    var show: TvShow!
+    var episode: Episode!
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
@@ -23,15 +24,18 @@ class ShowCell: UICollectionViewCell {
         layer.borderWidth = 1.0
     }
     
-    func configureCell(show: TvShow) {
-        self.show = show
+    func configureCell(episode: Episode) {
+        self.episode = episode
         
-        shownameLbl.text = self.show.name.capitalized
+        shownameLbl.text = self.episode.name.capitalized
         showImg.image = #imageLiteral(resourceName: "tv_show_image_is_not_available")
         showImg.af_cancelImageRequest()
-        if let imageURL = show.imageURL {
-            showImg.af_setImage(withURL: imageURL)
-        }
+        
+        episode.getImageURL(completion: { (url: URL) in
+            if episode.key == self.episode.key {
+                self.showImg.af_setImage(withURL: url)
+            }
+        })
     }
 
 

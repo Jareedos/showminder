@@ -20,8 +20,8 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     
     var selectedBtn: UIButton!// The currently selected button, always non-nil
 
-    var filterdShows = [TvShow]()
-    var tvShowsArray = [TvShow] ()
+    var filteredEpisodes = [Episode]()
+    var episodes = [Episode] ()
     var searchMode = false
     
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         refreshContent()
     }
     
-    let showsRef = FIRDatabase.database().reference().child("shows")
+    var showsRef = FIRDatabase.database().reference().child("shows")
     var showHandle: FIRDatabaseHandle?
     
     func refreshContent() {
@@ -54,44 +54,38 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         if let showHandle = showHandle {
             showsRef.removeObserver(withHandle: showHandle)
         }
-        self.tvShowsArray.removeAll()
+        self.episodes.removeAll()
     
         switch selectedBtn {
         case newTonightBtn:
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "M/d/y"
+            dateFormatter.dateFormat = "d/M/y"
             let date = dateFormatter.string(from: Date())
-            let tonightQuery = showsRef.queryOrdered(byChild: "date").queryEqual(toValue: date)
-            showHandle = tonightQuery.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
-                
-                let tvShow = TvShow(snapshot: snapshot)
-                
-                self.tvShowsArray.sort(by: {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "h:mm a"
-                    guard
-                        let dateA = formatter.date(from: $0.0.showTime),
-                        let dateB = formatter.date(from: $0.1.showTime)
-                        else {
-                            return false
-                    }
-                    return dateA < dateB
-                })
-                
-                self.tvShowsArray.append(tvShow)
-                self.collection.reloadData()
-                }, withCancel: nil)
+            let dateKey = date.replacingOccurrences(of: "/", with: "-")
+            
+            showsRef = DataService.ds.REF_EPISODES_BY_DATE.child("2-6-2011")
+            showHandle = showsRef.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+                self.episodes.append(Episode(snapshot: snapshot))
+                DispatchQueue.main.async {
+                    self.collection.reloadData()
+                }
+            })
+            
             break
         case allShowsBtn:
-            let showsRef = FIRDatabase.database().reference().child("shows")
-            let allShowsQuery = showsRef.queryOrdered(byChild: "name")
-            showHandle = allShowsQuery.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
-                let tvShow = TvShow(snapshot: snapshot)
-                self.tvShowsArray.append(tvShow)
-                self.collection.reloadData()
+            
+            self.showsRef = DataService.ds.REF_EPISODES_NEXT
+            self.showHandle = self.showsRef.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+                self.episodes.append(Episode(snapshot: snapshot))
+                DispatchQueue.main.async {
+                    self.collection.reloadData()
+                }
             })
+            
             break
         case myShowBtn:
+            
+            ///
             break
         default:
             break
@@ -103,11 +97,11 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShowCell", for: indexPath) as? ShowCell {
             
             if searchMode {
-                let tvShow = filterdShows[indexPath.item]
-                cell.configureCell(show: tvShow)
+                let tvShow = filteredEpisodes[indexPath.item]
+                cell.configureCell(episode: tvShow)
             } else {
-                let tvShow = tvShowsArray[indexPath.item]
-                cell.configureCell(show: tvShow)
+                let tvShow = episodes[indexPath.item]
+                cell.configureCell(episode: tvShow)
             }
             return cell
         }else {
@@ -116,22 +110,22 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var show: TvShow!
+        var episode: Episode!
         
         if searchMode {
-            show = filterdShows[indexPath.row]
+            episode = filteredEpisodes[indexPath.row]
         } else {
-            show = tvShowsArray[indexPath.row]
+            episode = episodes[indexPath.row]
         }
         
-        performSegue(withIdentifier: "ShowDetailVC" , sender: show)
+        performSegue(withIdentifier: "ShowDetailVC" , sender: episode)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if searchMode {
-            return filterdShows.count
+            return filteredEpisodes.count
         }
-        return tvShowsArray.count
+        return episodes.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -149,8 +143,8 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
             view.endEditing(true)
         } else {
             searchMode = true
-            let lower = searchBar.text!.lowercased()
-            filterdShows = tvShowsArray.filter({$0.name.lowercased().range(of: lower) != nil})
+            let lower = searchText.lowercased()
+            filteredEpisodes = episodes.filter({$0.name.lowercased().range(of: lower) != nil})
             collection.reloadData()
         }
         
@@ -166,7 +160,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
             lastButton.backgroundColor = UIColor.clear
             view.endEditing(true)
             searchMode = false
-            searchBar.text = " "
+            searchBar.text = ""
         }
         
         newlySelectedButton.backgroundColor = UIColor.showMinderGray
@@ -178,8 +172,8 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailVC" {
             if let detailsVC = segue.destination as? ShowDetailVC {
-                if let tvShow = sender as? TvShow {
-                    detailsVC.selectedTvShow = tvShow
+                if let episode = sender as? Episode {
+                    detailsVC.episode = episode
                 }
             }
         }

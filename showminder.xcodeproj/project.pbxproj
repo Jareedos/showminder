@@ -19,6 +19,7 @@
 		BF26D4A11D63C28400C0267B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4A01D63C28400C0267B /* Assets.xcassets */; };
 		BF26D4A41D63C28400C0267B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4A21D63C28400C0267B /* LaunchScreen.storyboard */; };
 		BF26D4B11D63C72C00C0267B /* beyond_the_mountains.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */; };
+		BF2A05131DC3D04900E5139C /* Episodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2A05121DC3D04900E5139C /* Episodes.swift */; };
 		BF4D08EA1D94984E0045791B /* TvShows.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08E91D94984E0045791B /* TvShows.swift */; };
 		BF4D08EC1D94CDDD0045791B /* ShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08EB1D94CDDD0045791B /* ShowCell.swift */; };
 		BF4D08F01D94D1B00045791B /* ShowsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4D08EF1D94D1B00045791B /* ShowsVC.swift */; };
@@ -28,6 +29,7 @@
 		BFD2785C1D8B49CC00746CD8 /* TvShowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */; };
 		BFD2785E1D8CBE4500746CD8 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD2785D1D8CBE4500746CD8 /* keys.swift */; };
 		BFF363911D6FA80800E764A8 /* background_showmider,png.gif in Resources */ = {isa = PBXBuildFile; fileRef = BFF363901D6FA80800E764A8 /* background_showmider,png.gif */; };
+		BFFCAC7F1DA30C420092D1AF /* MaterialImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFCAC7E1DA30C420092D1AF /* MaterialImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,7 @@
 		BF26D4A31D63C28400C0267B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF26D4A51D63C28400C0267B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF26D4B01D63C72C00C0267B /* beyond_the_mountains.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beyond_the_mountains.ttf; sourceTree = "<group>"; };
+		BF2A05121DC3D04900E5139C /* Episodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episodes.swift; sourceTree = "<group>"; };
 		BF4D08E91D94984E0045791B /* TvShows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShows.swift; sourceTree = "<group>"; };
 		BF4D08EB1D94CDDD0045791B /* ShowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCell.swift; sourceTree = "<group>"; };
 		BF4D08EF1D94D1B00045791B /* ShowsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowsVC.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 		BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TvShowApi.swift; sourceTree = "<group>"; };
 		BFD2785D1D8CBE4500746CD8 /* keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		BFF363901D6FA80800E764A8 /* background_showmider,png.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "background_showmider,png.gif"; sourceTree = "<group>"; };
+		BFFCAC7E1DA30C420092D1AF /* MaterialImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialImage.swift; sourceTree = "<group>"; };
 		EF656B81D30B0F73E73D1409 /* Pods-showminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-showminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-showminder/Pods-showminder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +132,7 @@
 			children = (
 				BFD2785B1D8B49CC00746CD8 /* TvShowApi.swift */,
 				BF4D08E91D94984E0045791B /* TvShows.swift */,
+				BF2A05121DC3D04900E5139C /* Episodes.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				BF11135E1D7F7FA00061E014 /* MaterialBtn.swift */,
 				BF1113601D7FA8960061E014 /* MaterialTextField.swift */,
 				BF4D08EB1D94CDDD0045791B /* ShowCell.swift */,
+				BFFCAC7E1DA30C420092D1AF /* MaterialImage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 				BF9B0E441D8203BE008133C7 /* DataService.swift in Sources */,
 				BF4D08F81DA01A2F0045791B /* UIColor+Pallete.swift in Sources */,
 				BF11135B1D7F7B820061E014 /* MaterialView.swift in Sources */,
+				BF2A05131DC3D04900E5139C /* Episodes.swift in Sources */,
 				BF4D08EA1D94984E0045791B /* TvShows.swift in Sources */,
 				BF4D08F01D94D1B00045791B /* ShowsVC.swift in Sources */,
 				BF26D49C1D63C28400C0267B /* ViewController.swift in Sources */,
@@ -327,6 +334,7 @@
 				BF11135D1D7F7C400061E014 /* Constants.swift in Sources */,
 				BF11135F1D7F7FA00061E014 /* MaterialBtn.swift in Sources */,
 				BF4D08EC1D94CDDD0045791B /* ShowCell.swift in Sources */,
+				BFFCAC7F1DA30C420092D1AF /* MaterialImage.swift in Sources */,
 				BF4D08F61D95AAE90045791B /* ShowDetailVC.swift in Sources */,
 				BFD2785C1D8B49CC00746CD8 /* TvShowApi.swift in Sources */,
 			);
@@ -448,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71E6DF4678D9598FD356F65B /* Pods-showminder.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = showminder/showminder.entitlements;
 				DEVELOPMENT_TEAM = J69W6VP8JF;
@@ -464,6 +473,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF656B81D30B0F73E73D1409 /* Pods-showminder.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = showminder/showminder.entitlements;
 				DEVELOPMENT_TEAM = J69W6VP8JF;

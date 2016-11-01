@@ -54,19 +54,81 @@ func callApi(completed: @escaping DownloadComplete) {
                                         showId = showId.replacingOccurrences(of: "]", with: "")
                                         
                                         var showToSave = show
-                                        if let dateString = show["date"] as? String, let timeString = show["showTime"] as? String {
-                                            let dateComponents = dateString.components(separatedBy: " ")
-                                            if (dateComponents.count == 2){
-                                                showToSave["showingDay"] = dateComponents[0]
-                                                showToSave["date"] = dateComponents[1]
+                                        
+                                        // Episode Title, Season number and Episode number
+                                        if let episode = show["SeasonNumber"] as? String {
+                                            
+                                            // Parse the episode and season number
+                                            let components = (episode as NSString).components(separatedBy: ", ")
+                                            if components.count == 2 {
+                                                showToSave["seasonNumber"] = components[0]
                                             }
+                                        }
+                                        
+                                        // Remove the episodes from the show dictionary to save
+                                        showToSave["episodeNumber"] = nil
+                                        // Remove the date and showTime
+                                        showToSave["date"] = nil
+                                        showToSave["showTime"] = nil
+                                        
+                                        // Save the Show
+                                        reference.child(showId).updateChildValues(showToSave)
+                                        
+                                        
+                                        
+                                        if let episodes = show["episodeNumber"] as? [[String: Any]], let showTime = show["showTime"] as? String {
+                                            
+                                            var hasAlreadyPickedTheNextEpisode = false
+                                            var i = 0
+                                            
+                                            for episode in episodes {
+                                                if let dateString = episode["episodeDate"] as? String {
+                                                    // Get the timestamp
+                                                    let dateFormatter = DateFormatter()
+                                                    dateFormatter.dateFormat = "dd/MM/yyyyh:mm a"
+                                                    let string = dateString + showTime
+                                                    
+                                                    if let date = dateFormatter.date(from: string) {
+                                                        
+                                                        let timestamp = date.timeIntervalSince1970
+                                                        
+                                                        var episodeToSave = episode
+                                                        episodeToSave["timestamp"] = timestamp
+                                                        episodeToSave["name"] = name
+                                                        episodeToSave["episode"] = episode["name"]
+                                                        episodeToSave["channel"] = channel
+                                                        episodeToSave["showId"] = showId
+                                                        episodeToSave["seasonNumber"] = showToSave["seasonNumber"]
+                                                        episodeToSave["episodeDate"] = nil
+                                                        
+                                                        
+                                                        let episodeKey = String(format: "%.0f", timestamp)
+                                                        let dateKey = dateString.replacingOccurrences(of: "/", with: "-")
+                                                        // Put the episode into episodesByDate
+                                                        DataService.ds.REF_EPISODES_BY_DATE.child(dateKey).child(episodeKey).setValue(episodeToSave)
+                                                        
+                                                        // Put the episode into episodesByShow
+                                                        DataService.ds.REF_EPISODES_BY_SHOW.child(showId).child(episodeKey).setValue(episodeToSave)
+                                                        
+                                                        // Put the episode into nextEpisodes
+                                                        
+                                                        let theShowWasntAiredYet = Date().timeIntervalSince(date) < 0
+                                                        let thisIsTheLastShowOfTheSeason = i + 1 == episodes.count
+                                                        let thisIsTheNextShow = (theShowWasntAiredYet || thisIsTheLastShowOfTheSeason) && hasAlreadyPickedTheNextEpisode == false
+                                                        if thisIsTheNextShow {
+                                                            hasAlreadyPickedTheNextEpisode = true
+                                                            DataService.ds.REF_EPISODES_NEXT.child(showId).setValue(episodeToSave)
+                                                        }
+                                                    }
+                                                    i += 1
+                                                }
+                                            }// End of the for loop
+                                            
+                                            
                                         }
                                     
                                         
-                                        showToSave["image"] = nil // removing the image field
-                                        
-                                        reference.child(showId).updateChildValues(showToSave)
-                                        
+                                        /*
                                         for fileNameKey in keys {
                                             if let fileName = imageFileNames[fileNameKey] as? String {
                                                 
@@ -93,6 +155,7 @@ func callApi(completed: @escaping DownloadComplete) {
                                                 }
                                             }
                                         }
+ */
                                         
                                         // Download the image and save the proper url
 //                                        if let url = show["image"] as? String {
