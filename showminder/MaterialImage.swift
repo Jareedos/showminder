@@ -11,9 +11,11 @@ import UIKit
 class MaterialImage: UIImageView {
 
     override func awakeFromNib() {
+        layoutIfNeeded()
         layer.cornerRadius = 5.0
         layer.borderColor = UIColor(red: SHADOW_COLOR, green: SHADOW_COLOR, blue: SHADOW_COLOR, alpha: 0.1).cgColor
         layer.borderWidth = 1.0
+        clipsToBounds = true
     }
 
 }

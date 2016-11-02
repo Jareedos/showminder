@@ -21,13 +21,17 @@ func getImageFileNames(completed: @escaping (_ fileNames: NSDictionary)->Void) {
 }
 
 func callApi(completed: @escaping DownloadComplete) {
+    
+    // DataService.ds.REF_EPISODES_BY_SHOW.removeValue() // deleting the episodes by show ref
+    
+    
     getImageFileNames { (imageFileNames: NSDictionary) in
         
         Alamofire.request("https://www.parsehub.com/api/v2/projects/\(projectToken)/last_ready_run/data?api_key=\(apiAccessToken)&format=json").responseJSON
             { response in
                 
-                let imageFileNames = imageFileNames
-                let keys = imageFileNames.allKeys as! [String]
+                // let imageFileNames = imageFileNames
+                // let keys = imageFileNames.allKeys as! [String]
                 
                 let reference = DataService.ds.REF_SHOWS
                 
@@ -66,7 +70,7 @@ func callApi(completed: @escaping DownloadComplete) {
                                         }
                                         
                                         // Remove the episodes from the show dictionary to save
-                                        showToSave["episodeNumber"] = nil
+                                        showToSave["Episodes"] = nil
                                         // Remove the date and showTime
                                         showToSave["date"] = nil
                                         showToSave["showTime"] = nil
@@ -76,19 +80,25 @@ func callApi(completed: @escaping DownloadComplete) {
                                         
                                         
                                         
-                                        if let episodes = show["episodeNumber"] as? [[String: Any]], let showTime = show["showTime"] as? String {
+                                        if let episodes = show["Episodes"] as? [[String: Any]], let showTime = show["showTime"] as? String {
                                             
                                             var hasAlreadyPickedTheNextEpisode = false
                                             var i = 0
                                             
                                             for episode in episodes {
+                                                let string = name + " " + "\(episode["episodeDate"])"
+                                                print(string)
                                                 if let dateString = episode["episodeDate"] as? String {
+                                                    print("1")
+                                                    
                                                     // Get the timestamp
                                                     let dateFormatter = DateFormatter()
-                                                    dateFormatter.dateFormat = "dd/MM/yyyyh:mm a"
+                                                    dateFormatter.dateFormat = "MM/dd/yyyyh:mm a"
+                                                    dateFormatter.timeZone = TimeZone(identifier: "EST")
                                                     let string = dateString + showTime
                                                     
                                                     if let date = dateFormatter.date(from: string) {
+                                                        print("2")
                                                         
                                                         let timestamp = date.timeIntervalSince1970
                                                         
@@ -102,9 +112,10 @@ func callApi(completed: @escaping DownloadComplete) {
                                                         episodeToSave["episodeDate"] = nil
                                                         
                                                         
-                                                        let episodeKey = String(format: "%.0f", timestamp)
+                                                        let episodeKey = String(format: "%.0f", timestamp) + showId
                                                         let dateKey = dateString.replacingOccurrences(of: "/", with: "-")
                                                         // Put the episode into episodesByDate
+                                                        print("saving to episodesByDate \(dateKey) \(episodeKey)")
                                                         DataService.ds.REF_EPISODES_BY_DATE.child(dateKey).child(episodeKey).setValue(episodeToSave)
                                                         
                                                         // Put the episode into episodesByShow
@@ -166,7 +177,7 @@ func callApi(completed: @escaping DownloadComplete) {
                                     }
                                     
                                     
-                                    print(show["name"])
+                                    //print(show["name"])
                                 }
                             }
                         }

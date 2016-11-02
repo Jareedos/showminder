@@ -43,11 +43,16 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
 //        let tonightQuery = showsRef.queryOrdered(byChild: "date").queryEqual(toValue: date)
 //        let myQuery = showsRef
         selectedBtn = newTonightBtn
-        refreshContent()
     }
     
     var showsRef = FIRDatabase.database().reference().child("shows")
     var showHandle: FIRDatabaseHandle?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        refreshContent()
+    }
     
     func refreshContent() {
         
@@ -59,11 +64,11 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         switch selectedBtn {
         case newTonightBtn:
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "d/M/y"
+            dateFormatter.dateFormat = "M/d/y"
             let date = dateFormatter.string(from: Date())
             let dateKey = date.replacingOccurrences(of: "/", with: "-")
             
-            showsRef = DataService.ds.REF_EPISODES_BY_DATE.child("2-6-2011")
+            showsRef = DataService.ds.REF_EPISODES_BY_DATE.child(dateKey)
             showHandle = showsRef.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
                 self.episodes.append(Episode(snapshot: snapshot))
                 DispatchQueue.main.async {
@@ -71,7 +76,6 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
                 }
             })
             
-            break
         case allShowsBtn:
             
             self.showsRef = DataService.ds.REF_EPISODES_NEXT
@@ -82,11 +86,25 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
                 }
             })
             
-            break
         case myShowBtn:
+            self.collection.reloadData()
+            self.showsRef = DataService.ds.REF_SHOWS_BY_FOLLOWER.child(DataService.ds.currentUserId())
+            self.showHandle = self.showsRef.observe(.childAdded, with: { (snapshot: FIRDataSnapshot) in
+                
+                // If the show is being followed b
+                if let isFollowing = snapshot.value as? Bool, isFollowing == true {
+                    DataService.ds.REF_EPISODES_NEXT.child(snapshot.key).observeSingleEvent(of: .value, with: { (snapshot: FIRDataSnapshot) in
+                        if snapshot.exists() {
+                            self.episodes.append(Episode(snapshot: snapshot))
+                            DispatchQueue.main.async {
+                                self.collection.reloadData()
+                            }
+                        }
+                    })
+                }
+                
+            })
             
-            ///
-            break
         default:
             break
         }

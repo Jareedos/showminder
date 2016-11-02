@@ -30,6 +30,10 @@ class DataService {
         return FIRDatabase.database().reference()
     }
     
+    func currentUserId() -> String {
+        return FIRAuth.auth()!.currentUser!.uid
+    }
+    
     
     func createFirebaseDBUser(uid: String, userEmail: Dictionary<String, String>, cableProvider: Dictionary<String, String>, timeZone: Dictionary<String, String>) {
         REF_USERS.child(uid).updateChildValues(userEmail)

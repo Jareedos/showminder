@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OneSignal
 import FirebaseDatabase
 import FirebaseAuth
 
@@ -24,6 +23,9 @@ class ShowDetailVC: UIViewController {
     @IBOutlet weak var showDayLbl: UILabel!
     @IBOutlet weak var showDateLbl: UILabel!
     @IBOutlet weak var followBtn: UIButton!
+    
+    var isFollowing = false
+    var followingRef : FIRDatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,15 +50,22 @@ class ShowDetailVC: UIViewController {
         
         showDayLbl.text = episode.showDay()
         showDateLbl.text = episode.showDate()
+        
+        // St the following ref
+        followingRef = DataService.ds.REF_SHOWS_BY_FOLLOWER.child(DataService.ds.currentUserId()).child(self.episode.showId)
+        
+        // Observe the follow status of the show
+        followingRef.observe(.value, with: { snapshot in
+            if let isFollowing = snapshot.value as? Bool {
+                self.isFollowing = isFollowing
+                self.followBtn.setTitle(isFollowing ? "UnFollow" : "Follow", for: .normal)
+            }
+        })
     }
     
     @IBAction func onFollowBtnPressed(_ sender: AnyObject) {
-        OneSignal.idsAvailable { (userId: String?, pushToken: String?) in
-            FIRDatabase.database().reference().child("followers").child(self.episode.key).child(FIRAuth.auth()!.currentUser!.uid).updateChildValues([
-                "onesignalId" : userId ?? "",
-                "email" : FIRAuth.auth()!.currentUser?.email ?? ""
-                ])
-        }
+        // Toggle the follow setting for this show
+        followingRef.setValue(!isFollowing)
     }
 
     @IBAction func backBtnPressed(_ sender: UIButton) {

@@ -62,8 +62,7 @@ class ViewController: UIViewController {
                     
                         
                             
-                            if error != nil {
-                                print(error)
+                            if let _ = error {
                                 self.showErrorAlert("Could not create account", msg: "Server error, Please try again. Password must be 6 characters or longer")
                             } else {
             
