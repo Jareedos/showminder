@@ -456,7 +456,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 71E6DF4678D9598FD356F65B /* Pods-showminder.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = showminder/showminder.entitlements;
 				DEVELOPMENT_TEAM = J69W6VP8JF;
@@ -473,7 +473,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF656B81D30B0F73E73D1409 /* Pods-showminder.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = showminder/showminder.entitlements;
 				DEVELOPMENT_TEAM = J69W6VP8JF;
