@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import AlamofireImage
+import UserNotifications
 
 class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
@@ -32,6 +33,20 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         searchBar.delegate = self
         
         searchBar.returnKeyType = UIReturnKeyType.done
+        
+        // requesting autherization
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler:
+                {(granted, error) in
+                   if granted{
+                     print("permission granted")
+                   } else {
+                     print(error.debugDescription)
+                    }
+            })
+        } else {
+            showUpdateAlert("Software Update Nessesary", msg: "In order to recieve notifications, your IOS must 10.0 or higher.")
+        }
 
         // Do any additional setup after loading the view.
 //        
@@ -195,6 +210,14 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
                 }
             }
         }
+    }
+    
+    func showUpdateAlert(_ title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default , handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+        
     }
     
     
