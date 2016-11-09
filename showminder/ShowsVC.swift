@@ -34,7 +34,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
         
         searchBar.returnKeyType = UIReturnKeyType.done
         
-        // requesting autherization
+        // requesting notification autherization
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler:
                 {(granted, error) in
