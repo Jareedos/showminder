@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import UserNotifications
 
 
 class ShowDetailVC: UIViewController {
@@ -71,7 +72,18 @@ class ShowDetailVC: UIViewController {
     @IBAction func backBtnPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-  
     
+    func schedualeNotification(at date: Date) {
+        if #available(iOS 10.0, *) {
+            let notif = UNMutableNotificationContent()
+            
+            notif.title = ""
+        } else {
+            // Fallback on earlier versions
+        }
+        
+    }
+
+  
 
 }

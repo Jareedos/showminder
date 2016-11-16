@@ -24,6 +24,7 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
     var filteredEpisodes = [Episode]()
     var episodes = [Episode] ()
     var searchMode = false
+    var showNotifications = [String] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,15 +49,6 @@ class ShowsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataS
             showUpdateAlert("Software Update Nessesary", msg: "In order to recieve notifications, your IOS must 10.0 or higher.")
         }
 
-        // Do any additional setup after loading the view.
-//        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "M/d/y"
-//        let date = dateFormatter.string(from: Date())
-        
-        
-//        let tonightQuery = showsRef.queryOrdered(byChild: "date").queryEqual(toValue: date)
-//        let myQuery = showsRef
         selectedBtn = newTonightBtn
     }
     
