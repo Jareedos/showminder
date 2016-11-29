@@ -24,6 +24,7 @@ class ShowDetailVC: UIViewController {
     @IBOutlet weak var showDayLbl: UILabel!
     @IBOutlet weak var showDateLbl: UILabel!
     @IBOutlet weak var followBtn: UIButton!
+    @IBOutlet weak var showTime: UILabel!
     
     var isFollowing = false
     var followingRef : FIRDatabaseReference!
@@ -51,6 +52,7 @@ class ShowDetailVC: UIViewController {
         
         showDayLbl.text = episode.showDay()
         showDateLbl.text = episode.showDate()
+        showTime.text = episode.showTime()
         
         // St the following ref
         followingRef = DataService.ds.REF_SHOWS_BY_FOLLOWER.child(DataService.ds.currentUserId()).child(self.episode.showId)
@@ -65,6 +67,18 @@ class ShowDetailVC: UIViewController {
     }
     
     @IBAction func onFollowBtnPressed(_ sender: AnyObject) {
+        
+        if (isFollowing == false) {
+            
+            let alert = UIAlertController(title: "Following \(episode.name)", message: "You are now following \(episode.name), You will now be sent a noitification everytime a new episode or season for \(episode.name) will be airing. \n Please select your which notifications you wish to recieve below", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default , handler: { action in
+                self.askTheUserToScheduleNotifications()
+            })
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        } else {
+            removeNotifications()
+        }
         // Toggle the follow setting for this show
         followingRef.setValue(!isFollowing)
     }
@@ -73,14 +87,79 @@ class ShowDetailVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func schedualeNotification(at date: Date) {
-        if #available(iOS 10.0, *) {
-            let notif = UNMutableNotificationContent()
+    
+    func askTheUserToScheduleNotifications() {
+        
+        let alert = UIAlertController(title: "Schedule a notification", message: "When would you like to get a notification?", preferredStyle: .alert)
+        alert.addAction( UIAlertAction(title: "Same day", style: .default , handler: { (action) in
+            self.scheduleAllNotifications(deltaTime: 0.0)
+        }))
+        alert.addAction( UIAlertAction(title: "A day before", style: .default , handler: { (action) in
+            self.scheduleAllNotifications(deltaTime: -24 * 60 * 60)
+        }))
+        alert.addAction( UIAlertAction(title: "Both", style: .default , handler: { (action) in
+            self.scheduleAllNotifications(deltaTime: 0.0)
+            self.scheduleAllNotifications(deltaTime: -24 * 60 * 60)
+        }))
+        alert.addAction( UIAlertAction(title: "Cancel", style: .cancel , handler: { (action) in
+            self.followingRef.setValue(!self.isFollowing)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func scheduleAllNotifications(deltaTime: TimeInterval) {
+        DataService.ds.REF_EPISODES_BY_SHOW.child(episode.showId).observeSingleEvent(of: .value, with: { snapshot in
             
-            notif.title = ""
-        } else {
-            // Fallback on earlier versions
+            for child in snapshot.children {
+                if let snap = child as? FIRDataSnapshot {
+                    let episode = Episode(snapshot: snap)
+                    self.scheduleNotification(episode: episode, deltaTime: deltaTime)
+                }
+            }
+            
+        })
+    }
+    
+    func scheduleNotification(episode: Episode, deltaTime: TimeInterval) {
+        // Episode airing time + the notification schedule offset
+        let inputDate = Date(timeIntervalSince1970: episode.timestamp).addingTimeInterval(deltaTime)
+        
+        // Get all date components except for the hour and minute
+        var components = Calendar.current.dateComponents([.year, .day, .month, .timeZone], from: inputDate)
+        // Set the hour to 10
+        components.hour = 10
+        
+        let date = Calendar.current.date(from: components)
+        
+        let notification = UILocalNotification()
+        notification.fireDate = date
+        notification.alertTitle = "ShowMinder Showing Alert"
+        notification.alertBody = " A new episode of \(episode.name) is on today at \(episode.showDate()). \n Showminder \n All showing times are set for EST & DirectTV, The time maybe be differnt depending on your Provider & timezone"
+        notification.userInfo = [
+            "showId" : episode.showId
+        ]
+        UIApplication.shared.scheduleLocalNotification(notification)
+    }
+    
+    func removeNotifications() {
+        guard let notifications = UIApplication.shared.scheduledLocalNotifications else {
+            return
         }
+        // Loop through the scheduled notifications
+        for notification in notifications {
+            // Find the ones of the current episode's show
+            if let userInfo = notification.userInfo, let showId = userInfo["showId"] as? String, showId == episode.showId {
+                // Cancel it
+                UIApplication.shared.cancelLocalNotification(notification)
+            }
+        }
+    }
+    
+    func showAlert(_ title: String, msg: String) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default , handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
         
     }
 

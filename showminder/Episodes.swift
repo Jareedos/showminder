@@ -61,4 +61,9 @@ class Episode {
         dateFormatter.dateStyle = .medium
         return dateFormatter.string(from: Date(timeIntervalSince1970: timestamp))
     }
+    func showTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        return dateFormatter.string(from: Date(timeIntervalSince1970: timestamp))
+    }
 }
