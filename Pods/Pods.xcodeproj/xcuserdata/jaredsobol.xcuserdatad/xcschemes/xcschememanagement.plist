@@ -19,7 +19,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TPKeyboardAvoiding.xcscheme</key>
+		<key>SwiftKeychainWrapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,17 +32,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6F575C561ACF1F6394348A56F867D095</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8EFCF95A511CEBF6FB96123FE960C2E7</key>
+		<key>BBD05D1224A7012AE047B395D3DFE02B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE1DEF9CDE0E9CB2E7C65698D8FBC806</key>
 		<dict>
 			<key>primary</key>
 			<true/>

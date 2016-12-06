@@ -10,7 +10,7 @@ pod 'Firebase/Database'
 pod 'Firebase/Storage'
 pod 'Alamofire', '~> 4.0'
 pod 'AlamofireImage'
-pod 'TPKeyboardAvoiding'
+pod 'SwiftKeychainWrapper'
 #pod 'OneSignal'
 #pod 'SwiftyJSON'
 

@@ -29,6 +29,7 @@ class ShowDetailVC: UIViewController {
     var isFollowing = false
     var followingRef : FIRDatabaseReference!
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,14 +71,21 @@ class ShowDetailVC: UIViewController {
         
         if (isFollowing == false) {
             
-            let alert = UIAlertController(title: "Following \(episode.name)", message: "You are now following \(episode.name), You will now be sent a noitification everytime a new episode or season for \(episode.name) will be airing. \n Please select your which notifications you wish to recieve below", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Do you want to follow \(episode.name)?", message: "By following \(episode.name), you will be sent a noitification everytime a new episode of \(episode.name) will be airing. \n Please select which notifications you wish to recieve after clicking \"OK\".", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default , handler: { action in
                 self.askTheUserToScheduleNotifications()
             })
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         } else {
-            removeNotifications()
+            let unFollowAlert = UIAlertController(title: "Do you want to unfollow \(episode.name)?", message: "If you unfollow \(episode.name), you will no longer get notifications for future episodes.", preferredStyle: .alert)
+            unFollowAlert.addAction(UIAlertAction(title: "Unfollow", style: .default , handler: { (action) in
+                self.removeNotifications()
+            }))
+            unFollowAlert.addAction(UIAlertAction(title: "Cancel", style: .default , handler: { action in
+                self.followingRef.setValue(!self.isFollowing)
+            }))
+            present(unFollowAlert,animated: true, completion: nil)
         }
         // Toggle the follow setting for this show
         followingRef.setValue(!isFollowing)
@@ -89,17 +97,21 @@ class ShowDetailVC: UIViewController {
     
     
     func askTheUserToScheduleNotifications() {
-        
+        var todayOrTomorrow = ""
         let alert = UIAlertController(title: "Schedule a notification", message: "When would you like to get a notification?", preferredStyle: .alert)
         alert.addAction( UIAlertAction(title: "Same day", style: .default , handler: { (action) in
-            self.scheduleAllNotifications(deltaTime: 0.0)
+            todayOrTomorrow = "today"
+            self.scheduleAllNotifications(deltaTime: 0.0, todayOrTomorrow: todayOrTomorrow)
         }))
         alert.addAction( UIAlertAction(title: "A day before", style: .default , handler: { (action) in
-            self.scheduleAllNotifications(deltaTime: -24 * 60 * 60)
+            todayOrTomorrow = "tomorrow"
+            self.scheduleAllNotifications(deltaTime: -24 * 60 * 60, todayOrTomorrow: todayOrTomorrow)
         }))
         alert.addAction( UIAlertAction(title: "Both", style: .default , handler: { (action) in
-            self.scheduleAllNotifications(deltaTime: 0.0)
-            self.scheduleAllNotifications(deltaTime: -24 * 60 * 60)
+            todayOrTomorrow = "today"
+            self.scheduleAllNotifications(deltaTime: 0.0, todayOrTomorrow: todayOrTomorrow)
+            todayOrTomorrow = "tomorrow"
+            self.scheduleAllNotifications(deltaTime: -24 * 60 * 60, todayOrTomorrow: todayOrTomorrow)
         }))
         alert.addAction( UIAlertAction(title: "Cancel", style: .cancel , handler: { (action) in
             self.followingRef.setValue(!self.isFollowing)
@@ -107,20 +119,20 @@ class ShowDetailVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    func scheduleAllNotifications(deltaTime: TimeInterval) {
+    func scheduleAllNotifications(deltaTime: TimeInterval, todayOrTomorrow: String) {
         DataService.ds.REF_EPISODES_BY_SHOW.child(episode.showId).observeSingleEvent(of: .value, with: { snapshot in
             
             for child in snapshot.children {
                 if let snap = child as? FIRDataSnapshot {
                     let episode = Episode(snapshot: snap)
-                    self.scheduleNotification(episode: episode, deltaTime: deltaTime)
+                    self.scheduleNotification(episode: episode, deltaTime: deltaTime, todayOrTomorrow: todayOrTomorrow)
                 }
             }
             
         })
     }
     
-    func scheduleNotification(episode: Episode, deltaTime: TimeInterval) {
+    func scheduleNotification(episode: Episode, deltaTime: TimeInterval, todayOrTomorrow: String) {
         // Episode airing time + the notification schedule offset
         let inputDate = Date(timeIntervalSince1970: episode.timestamp).addingTimeInterval(deltaTime)
         
@@ -134,7 +146,7 @@ class ShowDetailVC: UIViewController {
         let notification = UILocalNotification()
         notification.fireDate = date
         notification.alertTitle = "ShowMinder Showing Alert"
-        notification.alertBody = " A new episode of \(episode.name) is on today at \(episode.showDate()). \n Showminder \n All showing times are set for EST & DirectTV, The time maybe be differnt depending on your Provider & timezone"
+        notification.alertBody = " A new episode of \(episode.name) is on \(todayOrTomorrow) at \(episode.showTime()). \n Showminder \n All showing times are set for EST & DirectTV, The time maybe be differnt depending on your Provider & timezone."
         notification.userInfo = [
             "showId" : episode.showId
         ]
